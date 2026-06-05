@@ -2,7 +2,7 @@
 window.addEventListener('load', () => {
     setTimeout(() => {
         document.getElementById('loader').classList.add('hidden');
-    }, 800);
+    }, 300);
 });
 
 // ========== LENIS SMOOTH SCROLL ==========
@@ -26,7 +26,6 @@ gsap.ticker.add((time) => {
 });
 gsap.ticker.lagSmoothing(0);
 
-// Header scroll
 ScrollTrigger.create({
     start: 'top -100',
     end: 99999,
@@ -36,7 +35,6 @@ ScrollTrigger.create({
     }
 });
 
-// Reveal animations
 const reveals = document.querySelectorAll('.reveal');
 reveals.forEach(el => {
     gsap.fromTo(el, {
@@ -77,7 +75,7 @@ function animateCursor() {
     requestAnimationFrame(animateCursor);
 }
 animateCursor();
-document.querySelectorAll('a, button, .subject-card, .semester-tab').forEach(el => {
+document.querySelectorAll('a, button, .doc-card, .doc-download-btn, .doc-filter, .semester-tab').forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
 });
@@ -178,12 +176,8 @@ function switchSemester(num) {
         tab.classList.remove('active');
         if (parseInt(tab.dataset.semester) === num) tab.classList.add('active');
     });
-    document.querySelectorAll('.semester-content').forEach(content => {
-        content.classList.remove('active');
-    });
+    document.querySelectorAll('.semester-content').forEach(content => content.classList.remove('active'));
     document.getElementById('semester-' + num).classList.add('active');
-
-    // Re-trigger animations for new content
     const newContent = document.getElementById('semester-' + num);
     newContent.querySelectorAll('.reveal').forEach(el => {
         gsap.fromTo(el, {
@@ -199,26 +193,49 @@ function switchSemester(num) {
     });
 }
 
+// ========== DOCUMENT FILTERS ==========
+function filterDocs(type) {
+    document.querySelectorAll('.doc-filter').forEach(f => f.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.semester-content.active .doc-card').forEach(card => {
+        if (type === 'all' || card.dataset.type === type) {
+            card.style.display = 'flex';
+            gsap.fromTo(card, {
+                opacity: 0,
+                y: 20
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.4,
+                ease: 'power3.out'
+            });
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// ========== DOWNLOAD SIMULATION ==========
+function downloadDoc(btn) {
+    const originalContent = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحميل...';
+    btn.style.background = 'var(--gold)';
+    btn.style.color = 'var(--void)';
+    setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-check"></i> تم التحميل!';
+        setTimeout(() => {
+            btn.innerHTML = originalContent;
+            btn.style.background = '';
+            btn.style.color = '';
+        }, 2000);
+    }, 1500);
+}
+
 // ========== SEARCH ==========
 document.querySelector('.search-box').addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase();
-    document.querySelectorAll('.subject-card').forEach(card => {
+    document.querySelectorAll('.doc-card').forEach(card => {
         const text = card.textContent.toLowerCase();
-        card.style.opacity = text.includes(query) || query === '' ? '1' : '0.3';
-        card.style.transform = text.includes(query) || query === '' ? '' : 'scale(0.95)';
-    });
-});
-
-// ========== SMOOTH ANCHOR SCROLLING ==========
-document.querySelectorAll('a[href^="education_platform"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        if (this.getAttribute('href').startsWith('education_platform.html#')) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').split('#')[1];
-            const target = document.getElementById(targetId);
-            if (target) lenis.scrollTo(target, {
-                offset: -80
-            });
-        }
+        card.style.display = text.includes(query) || query === '' ? 'flex' : 'none';
     });
 });
