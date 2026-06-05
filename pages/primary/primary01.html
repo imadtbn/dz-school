@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السنة الأولى ابتدائي | منصة التعلم</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --void: #0a0a0f; --navy: #0f172a; --navy-light: #1e293b;
+            --gold: #d4af37; --gold-light: #f0d78c; --parchment: #f5e6c8;
+            --text-light: #e2e8f0; --text-muted: #94a3b8; --accent: #c9a84c;
+            --card-bg: rgba(15, 23, 42, 0.7); --glass: rgba(255, 255, 255, 0.03);
+            --semester1: #e74c3c; --semester2: #3498db; --semester3: #2ecc71;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: auto; }
+        body {
+            font-family: 'Tajawal', sans-serif; background: var(--void); color: var(--text-light);
+            overflow-x: hidden; cursor: none;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--void); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+            width: 20px; height: 20px; border: 2px solid var(--gold); border-radius: 50%;
+            pointer-events: none; z-index: 99999; transition: width 0.3s, height 0.3s, border-color 0.3s;
+            mix-blend-mode: difference;
+        }
+        .cursor.hover { width: 60px; height: 60px; border-color: var(--parchment); }
+        .cursor-dot {
+            position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+            width: 6px; height: 6px; background: var(--gold); border-radius: 50%;
+            pointer-events: none; z-index: 99999;
+        }
+
+        /* Header */
+        .header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 1rem 3rem; background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px); border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s ease;
+        }
+        .header.scrolled { padding: 0.7rem 3rem; background: rgba(10, 10, 15, 0.95); }
+        .header-inner {
+            max-width: 1400px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+        }
+        .logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; flex-shrink: 0; }
+        .logo-icon {
+            width: 45px; height: 45px;
+            background: linear-gradient(135deg, var(--gold), var(--accent)); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: var(--void);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+        @keyframes logoPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+        }
+        .logo-text { font-size: 1.4rem; font-weight: 800; color: var(--parchment); letter-spacing: 1px; }
+        .logo-text span { color: var(--gold); }
+
+        .search-container { flex: 1; max-width: 500px; position: relative; }
+        .search-box {
+            width: 100%; padding: 0.8rem 1.2rem 0.8rem 3rem;
+            background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50px; color: var(--text-light); font-family: 'Tajawal', sans-serif;
+            font-size: 0.95rem; transition: all 0.3s ease; outline: none;
+        }
+        .search-box:focus {
+            background: rgba(212, 175, 55, 0.15); border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+        .search-box::placeholder { color: var(--text-muted); }
+        .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 1rem; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; right: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
+        .mobile-toggle { display: none; background: none; border: none; color: var(--gold); font-size: 1.5rem; cursor: pointer; }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 6rem 3rem 1rem; max-width: 1400px; margin: 0 auto;
+            display: flex; align-items: center; gap: 0.8rem; font-size: 0.9rem; color: var(--text-muted);
+        }
+        .breadcrumb a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+        .breadcrumb a:hover { color: var(--parchment); }
+        .breadcrumb i { font-size: 0.7rem; color: var(--gold); }
+        .breadcrumb-current { color: var(--parchment); font-weight: 600; }
+
+        /* Hero Year */
+        .hero-year {
+            position: relative; padding: 3rem 2rem 5rem;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+        #starfield { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .hero-year-content {
+            position: relative; z-index: 10; text-align: center; max-width: 800px;
+        }
+        .year-badge {
+            display: inline-flex; align-items: center; gap: 0.8rem;
+            padding: 0.6rem 1.5rem; background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px;
+            color: var(--gold); font-size: 0.95rem; margin-bottom: 1.5rem;
+        }
+        .year-badge i { font-size: 1.1rem; }
+        .hero-year-title {
+            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; color: var(--parchment);
+            margin-bottom: 1rem; text-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+        }
+        .hero-year-title .highlight {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-year-desc {
+            font-size: 1.1rem; color: var(--text-muted); line-height: 1.8;
+            max-width: 600px; margin: 0 auto 2rem;
+        }
+        .year-info-bar {
+            display: flex; justify-content: center; gap: 3rem; margin-top: 2rem;
+        }
+        .year-info-item {
+            display: flex; align-items: center; gap: 0.8rem;
+            padding: 0.8rem 1.5rem; background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 12px;
+        }
+        .year-info-item i { color: var(--gold); font-size: 1.2rem; }
+        .year-info-item span { color: var(--text-light); font-weight: 600; }
+        .year-info-item small { color: var(--text-muted); font-size: 0.8rem; margin-right: 0.5rem; }
+
+        /* Semesters Section */
+        .semesters-section { padding: 4rem 2rem; position: relative; z-index: 10; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: clamp(2rem, 4vw, 3rem); color: var(--parchment); margin-bottom: 1rem; }
+        .section-header p { color: var(--text-muted); font-size: 1.1rem; }
+        .section-line {
+            width: 80px; height: 3px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            margin: 1.5rem auto; border-radius: 2px;
+        }
+
+        .semester-tabs {
+            display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem;
+            max-width: 800px; margin: 0 auto 3rem;
+        }
+        .semester-tab {
+            flex: 1; padding: 1.2rem 2rem;
+            background: rgba(15, 23, 42, 0.6); border: 2px solid rgba(212, 175, 55, 0.1);
+            border-radius: 16px; color: var(--text-muted); font-family: 'Tajawal', sans-serif;
+            font-size: 1.1rem; font-weight: 700; cursor: pointer;
+            transition: all 0.4s ease; text-align: center; position: relative; overflow: hidden;
+        }
+        .semester-tab::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            transform: scaleX(0); transition: transform 0.4s ease;
+        }
+        .semester-tab[data-semester="1"]::before { background: var(--semester1); }
+        .semester-tab[data-semester="2"]::before { background: var(--semester2); }
+        .semester-tab[data-semester="3"]::before { background: var(--semester3); }
+        .semester-tab:hover::before, .semester-tab.active::before { transform: scaleX(1); }
+        .semester-tab.active {
+            background: rgba(15, 23, 42, 0.9); color: var(--parchment);
+            border-color: rgba(212, 175, 55, 0.3); transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        .semester-tab.active[data-semester="1"] { border-color: rgba(231, 76, 60, 0.4); box-shadow: 0 15px 40px rgba(231, 76, 60, 0.1); }
+        .semester-tab.active[data-semester="2"] { border-color: rgba(52, 152, 219, 0.4); box-shadow: 0 15px 40px rgba(52, 152, 219, 0.1); }
+        .semester-tab.active[data-semester="3"] { border-color: rgba(46, 204, 113, 0.4); box-shadow: 0 15px 40px rgba(46, 204, 113, 0.1); }
+        .semester-tab .tab-icon { font-size: 1.5rem; display: block; margin-bottom: 0.5rem; }
+        .semester-tab .tab-count { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; display: block; margin-top: 0.3rem; }
+
+        .semester-content { display: none; animation: fadeIn 0.5s ease; }
+        .semester-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Subjects Grid */
+        .subjects-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+        }
+        .subject-card {
+            background: var(--glass); border: 1px solid rgba(212, 175, 55, 0.08);
+            border-radius: 20px; padding: 2rem; display: flex; align-items: center; gap: 1.5rem;
+            transition: all 0.4s ease; cursor: pointer; backdrop-filter: blur(10px); text-decoration: none;
+        }
+        .subject-card:hover {
+            background: rgba(212, 175, 55, 0.05); border-color: rgba(212, 175, 55, 0.3);
+            transform: translateX(-10px) translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        .subject-icon {
+            width: 60px; height: 60px; min-width: 60px;
+            background: rgba(212, 175, 55, 0.1); border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: var(--gold); transition: all 0.3s;
+        }
+        .subject-card:hover .subject-icon { background: var(--gold); color: var(--void); }
+        .subject-info h4 { font-size: 1.2rem; color: var(--parchment); margin-bottom: 0.3rem; }
+        .subject-info p { font-size: 0.85rem; color: var(--text-muted); }
+        .subject-arrow { margin-right: auto; color: var(--gold); opacity: 0; transition: all 0.3s; }
+        .subject-card:hover .subject-arrow { opacity: 1; transform: translateX(-5px); }
+        .subject-count {
+            display: inline-flex; align-items: center; gap: 0.3rem;
+            padding: 0.2rem 0.8rem; background: rgba(212, 175, 55, 0.1);
+            border-radius: 20px; font-size: 0.75rem; color: var(--gold); margin-top: 0.5rem;
+        }
+
+        /* Ad Slots */
+        .ad-slot {
+            max-width: 1200px; margin: 3rem auto; padding: 2rem;
+            background: rgba(212, 175, 55, 0.03); border: 2px dashed rgba(212, 175, 55, 0.2);
+            border-radius: 20px; text-align: center; position: relative;
+        }
+        .ad-label {
+            position: absolute; top: -12px; right: 2rem;
+            background: var(--void); padding: 0.2rem 1rem;
+            color: var(--gold); font-size: 0.75rem; font-weight: 700;
+            border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 20px;
+        }
+        .ad-content {
+            min-height: 90px; display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted); font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--navy); border-top: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 5rem 2rem 2rem; position: relative; z-index: 10;
+        }
+        .footer-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .footer-brand .logo { margin-bottom: 1.5rem; }
+        .footer-brand p { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; }
+        .footer-social {
+            display: flex; gap: 1rem; margin-top: 1.5rem;
+        }
+        .social-link {
+            width: 45px; height: 45px; background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gold); font-size: 1.2rem; transition: all 0.3s; text-decoration: none;
+        }
+        .social-link:hover { background: var(--gold); color: var(--void); transform: translateY(-3px); }
+        .footer-section h4 {
+            color: var(--parchment); font-size: 1.2rem; margin-bottom: 1.5rem;
+            position: relative; display: inline-block;
+        }
+        .footer-section h4::after {
+            content: ''; position: absolute; bottom: -8px; right: 0;
+            width: 40px; height: 2px; background: var(--gold);
+        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a {
+            color: var(--text-muted); text-decoration: none; transition: all 0.3s;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .footer-links a:hover { color: var(--gold); padding-right: 5px; }
+        .footer-links a i { font-size: 0.7rem; color: var(--gold); }
+        .contact-item {
+            display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; color: var(--text-muted);
+        }
+        .contact-item i {
+            width: 40px; height: 40px; background: rgba(212, 175, 55, 0.1);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            color: var(--gold); font-size: 0.9rem;
+        }
+        .footer-bottom {
+            max-width: 1200px; margin: 0 auto; padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+        }
+        .footer-bottom p { color: var(--text-muted); font-size: 0.9rem; }
+        .footer-bottom .heart { color: #e74c3c; animation: heartbeat 1.5s ease-in-out infinite; }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
+        /* Loader */
+        .loader {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--void); z-index: 999999;
+            display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 2rem;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+        .loader.hidden { opacity: 0; visibility: hidden; }
+        .loader-cube {
+            width: 50px; height: 50px; border: 3px solid rgba(212, 175, 55, 0.2);
+            border-top-color: var(--gold); border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loader-text { color: var(--gold); font-weight: 600; letter-spacing: 2px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cursor, .cursor-dot { display: none; }
+            body { cursor: auto; }
+            .header { padding: 1rem; }
+            .header-inner { flex-wrap: wrap; }
+            .search-container { order: 3; width: 100%; max-width: none; margin-top: 1rem; }
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .year-info-bar { flex-direction: column; gap: 1rem; }
+            .semester-tabs { flex-direction: column; }
+            .subjects-grid { grid-template-columns: 1fr; }
+            .footer-grid { gap: 2rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .breadcrumb { padding: 5rem 1rem 1rem; flex-wrap: wrap; }
+        }
+
+        /* Reveal */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-cube"></div>
+        <div class="loader-text">جاري التحميل...</div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="education_platform.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="logo-text">منصة <span>التعلم</span></div>
+            </a>
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-box" placeholder="ابحث عن مادة أو نموذج...">
+            </div>
+            <nav class="nav-links">
+                <a href="education_platform.html">الرئيسية</a>
+                <a href="education_platform.html#levels">الأطوار</a>
+                <a href="education_platform.html#subjects">المواد</a>
+                <a href="education_platform.html#contact">تواصل</a>
+            </nav>
+            <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="education_platform.html"><i class="fas fa-home"></i> الرئيسية</a>
+        <i class="fas fa-chevron-left"></i>
+        <a href="education_platform.html#levels">الطور الابتدائي</a>
+        <i class="fas fa-chevron-left"></i>
+        <span class="breadcrumb-current">السنة الأولى</span>
+    </div>
+
+    <!-- Hero Year -->
+    <section class="hero-year">
+        <canvas id="starfield"></canvas>
+        <div class="hero-year-content">
+            <div class="year-badge">
+                <i class="fas fa-child"></i>
+                <span>الطور الابتدائي</span>
+            </div>
+            <h1 class="hero-year-title">
+                السنة <span class="highlight">الأولى</span> ابتدائي
+            </h1>
+            <p class="hero-year-desc">
+                استكشف جميع المواد الدراسية والنماذج المتاحة للسنة الأولى ابتدائي. فروض، اختبارات، وتمارين مصححة لجميع الفصول الدراسية.
+            </p>
+            <div class="year-info-bar">
+                <div class="year-info-item">
+                    <i class="fas fa-book"></i>
+                    <span>8 <small>مواد</small></span>
+                </div>
+                <div class="year-info-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>45 <small>نموذج</small></span>
+                </div>
+                <div class="year-info-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>3 <small>فصول</small></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Slot -->
+    <div class="ad-slot">
+        <span class="ad-label">إعلان</span>
+        <div class="ad-content">
+            <span>مساحة إعلانية - Google Ads</span>
+        </div>
+    </div>
+
+    <!-- Semesters Section -->
+    <section class="semesters-section" id="semesters">
+        <div class="section-header reveal">
+            <h2>الفصول الدراسية</h2>
+            <div class="section-line"></div>
+            <p>اختر الفصل الدراسي لاستعراض المواد والنماذج المتاحة</p>
+        </div>
+
+        <!-- Semester Tabs -->
+        <div class="semester-tabs reveal">
+            <button class="semester-tab active" data-semester="1" onclick="switchSemester(1)">
+                <span class="tab-icon">📚</span>
+                الفصل الأول
+                <span class="tab-count">15 نموذج</span>
+            </button>
+            <button class="semester-tab" data-semester="2" onclick="switchSemester(2)">
+                <span class="tab-icon">📝</span>
+                الفصل الثاني
+                <span class="tab-count">18 نموذج</span>
+            </button>
+            <button class="semester-tab" data-semester="3" onclick="switchSemester(3)">
+                <span class="tab-icon">🎯</span>
+                الفصل الثالث
+                <span class="tab-count">12 نموذج</span>
+            </button>
+        </div>
+
+        <!-- Semester 1 Content -->
+        <div class="semester-content active" id="semester-1">
+            <div class="subjects-grid">
+                <a href="Primary01_arabic.html" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-language"></i></div>
+                    <div class="subject-info">
+                        <h4>اللغة العربية</h4>
+                        <p>قراءة، إملاء، قواعد، تعبير</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 5 نماذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_french.html" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-globe"></i></div>
+                    <div class="subject-info">
+                        <h4>اللغة الفرنسية</h4>
+                        <p>Français - Lecture, Écriture</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 3 نماذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_math.html" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-square-root-alt"></i></div>
+                    <div class="subject-info">
+                        <h4>الرياضيات</h4>
+                        <p>أعداد، عمليات، هندسة</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 4 نماذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_science.html" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-flask"></i></div>
+                    <div class="subject-info">
+                        <h4>العلوم الطبيعية</h4>
+                        <p>عالم النبات، عالم الحيوان</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 2 نموذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_islamic.html" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-mosque"></i></div>
+                    <div class="subject-info">
+                        <h4>التربية الإسلامية</h4>
+                        <p>تجويد، تفسير، فقه، أخلاق</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 3 نماذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_history.html" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-landmark"></i></div>
+                    <div class="subject-info">
+                        <h4>التربية المدنية</h4>
+                        <p>تاريخ، جغرافيا، مواطنة</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 2 نموذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_art.html" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-palette"></i></div>
+                    <div class="subject-info">
+                        <h4>التربية الفنية</h4>
+                        <p>رسم، تشكيل، ألوان</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 1 نموذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_sport.html" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-running"></i></div>
+                    <div class="subject-info">
+                        <h4>التربية البدنية</h4>
+                        <p>تمارين، ألعاب رياضية</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 1 نموذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Semester 2 Content -->
+        <div class="semester-content" id="semester-2">
+            <div class="subjects-grid">
+                <a href="Primary01_arabic.html?s=2" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-language"></i></div>
+                    <div class="subject-info">
+                        <h4>اللغة العربية</h4>
+                        <p>قراءة، إملاء، قواعد، تعبير</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 6 نماذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_french.html?s=2" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-globe"></i></div>
+                    <div class="subject-info">
+                        <h4>اللغة الفرنسية</h4>
+                        <p>Français - Lecture, Écriture</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 4 نماذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_math.html?s=2" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-square-root-alt"></i></div>
+                    <div class="subject-info">
+                        <h4>الرياضيات</h4>
+                        <p>أعداد، عمليات، هندسة</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 5 نماذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_science.html?s=2" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-flask"></i></div>
+                    <div class="subject-info">
+                        <h4>العلوم الطبيعية</h4>
+                        <p>عالم النبات، عالم الحيوان</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 3 نماذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_islamic.html?s=2" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-mosque"></i></div>
+                    <div class="subject-info">
+                        <h4>التربية الإسلامية</h4>
+                        <p>تجويد، تفسير، فقه، أخلاق</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 4 نماذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_history.html?s=2" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-landmark"></i></div>
+                    <div class="subject-info">
+                        <h4>التربية المدنية</h4>
+                        <p>تاريخ، جغرافيا، مواطنة</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 2 نموذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_art.html?s=2" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-palette"></i></div>
+                    <div class="subject-info">
+                        <h4>التربية الفنية</h4>
+                        <p>رسم، تشكيل، ألوان</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 1 نموذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_sport.html?s=2" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-running"></i></div>
+                    <div class="subject-info">
+                        <h4>التربية البدنية</h4>
+                        <p>تمارين، ألعاب رياضية</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 1 نموذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Semester 3 Content -->
+        <div class="semester-content" id="semester-3">
+            <div class="subjects-grid">
+                <a href="Primary01_arabic.html?s=3" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-language"></i></div>
+                    <div class="subject-info">
+                        <h4>اللغة العربية</h4>
+                        <p>قراءة، إملاء، قواعد، تعبير</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 4 نماذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_french.html?s=3" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-globe"></i></div>
+                    <div class="subject-info">
+                        <h4>اللغة الفرنسية</h4>
+                        <p>Français - Lecture, Écriture</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 3 نماذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_math.html?s=3" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-square-root-alt"></i></div>
+                    <div class="subject-info">
+                        <h4>الرياضيات</h4>
+                        <p>أعداد، عمليات، هندسة</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 3 نماذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_science.html?s=3" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-flask"></i></div>
+                    <div class="subject-info">
+                        <h4>العلوم الطبيعية</h4>
+                        <p>عالم النبات، عالم الحيوان</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 2 نموذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_islamic.html?s=3" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-mosque"></i></div>
+                    <div class="subject-info">
+                        <h4>التربية الإسلامية</h4>
+                        <p>تجويد، تفسير، فقه، أخلاق</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 3 نماذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_history.html?s=3" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-landmark"></i></div>
+                    <div class="subject-info">
+                        <h4>التربية المدنية</h4>
+                        <p>تاريخ، جغرافيا، مواطنة</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 1 نموذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_art.html?s=3" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-palette"></i></div>
+                    <div class="subject-info">
+                        <h4>التربية الفنية</h4>
+                        <p>رسم، تشكيل، ألوان</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 1 نموذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+                <a href="Primary01_sport.html?s=3" class="subject-card reveal">
+                    <div class="subject-icon"><i class="fas fa-running"></i></div>
+                    <div class="subject-info">
+                        <h4>التربية البدنية</h4>
+                        <p>تمارين، ألعاب رياضية</p>
+                        <span class="subject-count"><i class="fas fa-file-pdf"></i> 1 نموذج</span>
+                    </div>
+                    <i class="fas fa-chevron-left subject-arrow"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Slot -->
+    <div class="ad-slot">
+        <span class="ad-label">إعلان</span>
+        <div class="ad-content">
+            <span>مساحة إعلانية - Google Ads</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="education_platform.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="logo-text">منصة <span>التعلم</span></div>
+                </a>
+                <p>منصة تعليمية شاملة تقدم نماذج الفروض والاختبارات المصححة لجميع الأطوار التعليمية. هدفنا مساعدة الطلاب على التحصيل الدراسي المتميز.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>روابط سريعة</h4>
+                <ul class="footer-links">
+                    <li><a href="education_platform.html"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                    <li><a href="education_platform.html#levels"><i class="fas fa-chevron-left"></i> الأطوار التعليمية</a></li>
+                    <li><a href="education_platform.html#subjects"><i class="fas fa-chevron-left"></i> المواد الدراسية</a></li>
+                    <li><a href="education_platform.html#resources"><i class="fas fa-chevron-left"></i> النماذج والتحميلات</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-left"></i> من نحن</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-left"></i> سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>معلومات التواصل</h4>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>الجزائر العاصمة، الجزائر</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contact@manassat-taalem.dz</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+213 555 123 456</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>متاح 24/7</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2026 منصة التعلم</p>
+            <p>صنع بـ <i class="fas fa-heart heart"></i> للتعليم</p>
+        </div>
+    </footer>
+
+    <script>
+        // ========== LOADER ==========
+        window.addEventListener('load', () => {
+            setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1500);
+        });
+
+        // ========== LENIS SMOOTH SCROLL ==========
+        const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smooth: true });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        // ========== GSAP SCROLL TRIGGER ==========
+        gsap.registerPlugin(ScrollTrigger);
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+
+        // Header scroll
+        ScrollTrigger.create({ start: 'top -100', end: 99999, toggleClass: { className: 'scrolled', targets: '.header' } });
+
+        // Reveal animations
+        const reveals = document.querySelectorAll('.reveal');
+        reveals.forEach(el => {
+            gsap.fromTo(el, { opacity: 0, y: 50 }, {
+                opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+                scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+            });
+        });
+
+        // ========== CUSTOM CURSOR ==========
+        const cursor = document.getElementById('cursor');
+        const cursorDot = document.getElementById('cursorDot');
+        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+        document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; cursorDot.style.left = mouseX + 'px'; cursorDot.style.top = mouseY + 'px'; });
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1; cursorY += (mouseY - cursorY) * 0.1;
+            cursor.style.left = cursorX + 'px'; cursor.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+        document.querySelectorAll('a, button, .subject-card, .semester-tab').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // ========== STARFIELD CANVAS ==========
+        const starCanvas = document.getElementById('starfield');
+        const starCtx = starCanvas.getContext('2d');
+        let stars = []; const starCount = 200;
+        function resizeStarCanvas() { starCanvas.width = window.innerWidth; starCanvas.height = window.innerHeight; }
+        resizeStarCanvas(); window.addEventListener('resize', resizeStarCanvas);
+        class Star {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * starCanvas.width; this.y = Math.random() * starCanvas.height;
+                this.size = Math.random() * 2 + 0.5; this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = (Math.random() - 0.5) * 0.3; this.opacity = Math.random() * 0.8 + 0.2;
+                this.brightness = Math.random();
+            }
+            update() {
+                this.x += this.speedX; this.y += this.speedY; this.brightness += 0.01;
+                if (this.brightness > 1) this.brightness = 0;
+                if (this.x < 0 || this.x > starCanvas.width || this.y < 0 || this.y > starCanvas.height) this.reset();
+            }
+            draw() {
+                const alpha = this.opacity * (0.5 + this.brightness * 0.5);
+                starCtx.beginPath(); starCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                starCtx.fillStyle = `rgba(212, 175, 55, ${alpha})`; starCtx.fill();
+            }
+        }
+        for (let i = 0; i < starCount; i++) stars.push(new Star());
+        let mouseStarX = 0, mouseStarY = 0;
+        document.addEventListener('mousemove', (e) => { mouseStarX = e.clientX; mouseStarY = e.clientY; });
+        function drawConnections() {
+            for (let i = 0; i < stars.length; i++) {
+                for (let j = i + 1; j < stars.length; j++) {
+                    const dx = stars[i].x - stars[j].x, dy = stars[i].y - stars[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 100) {
+                        const alpha = (1 - dist / 100) * 0.15;
+                        starCtx.beginPath(); starCtx.moveTo(stars[i].x, stars[i].y); starCtx.lineTo(stars[j].x, stars[j].y);
+                        starCtx.strokeStyle = `rgba(212, 175, 55, ${alpha})`; starCtx.lineWidth = 0.5; starCtx.stroke();
+                    }
+                }
+                const dx = stars[i].x - mouseStarX, dy = stars[i].y - mouseStarY;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 150) {
+                    const alpha = (1 - dist / 150) * 0.3;
+                    starCtx.beginPath(); starCtx.moveTo(stars[i].x, stars[i].y); starCtx.lineTo(mouseStarX, mouseStarY);
+                    starCtx.strokeStyle = `rgba(212, 175, 55, ${alpha})`; starCtx.lineWidth = 0.8; starCtx.stroke();
+                }
+            }
+        }
+        function animateStars() {
+            starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+            stars.forEach(star => { star.update(); star.draw(); }); drawConnections();
+            requestAnimationFrame(animateStars);
+        }
+        animateStars();
+
+        // ========== SEMESTER TABS ==========
+        function switchSemester(num) {
+            document.querySelectorAll('.semester-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (parseInt(tab.dataset.semester) === num) tab.classList.add('active');
+            });
+            document.querySelectorAll('.semester-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById('semester-' + num).classList.add('active');
+
+            // Re-trigger animations for new content
+            const newContent = document.getElementById('semester-' + num);
+            newContent.querySelectorAll('.reveal').forEach(el => {
+                gsap.fromTo(el, { opacity: 0, y: 30 }, {
+                    opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.1
+                });
+            });
+        }
+
+        // ========== SEARCH ==========
+        document.querySelector('.search-box').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            document.querySelectorAll('.subject-card').forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.opacity = text.includes(query) || query === '' ? '1' : '0.3';
+                card.style.transform = text.includes(query) || query === '' ? '' : 'scale(0.95)';
+            });
+        });
+
+        // ========== SMOOTH ANCHOR SCROLLING ==========
+        document.querySelectorAll('a[href^="education_platform"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('education_platform.html#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').split('#')[1];
+                    const target = document.getElementById(targetId);
+                    if (target) lenis.scrollTo(target, { offset: -80 });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
