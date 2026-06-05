@@ -10,9 +10,10 @@
     --accent: #c9a84c;
     --card-bg: rgba(15, 23, 42, 0.7);
     --glass: rgba(255, 255, 255, 0.03);
-    --semester1: #e74c3c;
-    --semester2: #3498db;
-    --semester3: #2ecc71;
+    --exam: #e74c3c;
+    --homework: #3498db;
+    --exercise: #2ecc71;
+    --revision: #f39c12;
 }
 
 * {
@@ -272,11 +273,11 @@ body {
 }
 
 
-/* Hero Year */
+/* Hero Subject */
 
-.hero-year {
+.hero-subject {
     position: relative;
-    padding: 3rem 2rem 5rem;
+    padding: 2rem 2rem 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -292,14 +293,14 @@ body {
     z-index: 1;
 }
 
-.hero-year-content {
+.hero-subject-content {
     position: relative;
     z-index: 10;
     text-align: center;
-    max-width: 800px;
+    max-width: 900px;
 }
 
-.year-badge {
+.subject-badge {
     display: inline-flex;
     align-items: center;
     gap: 0.8rem;
@@ -312,11 +313,11 @@ body {
     margin-bottom: 1.5rem;
 }
 
-.year-badge i {
+.subject-badge i {
     font-size: 1.1rem;
 }
 
-.hero-year-title {
+.hero-subject-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 900;
     color: var(--parchment);
@@ -324,14 +325,14 @@ body {
     text-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
 }
 
-.hero-year-title .highlight {
+.hero-subject-title .highlight {
     background: linear-gradient(135deg, var(--gold), var(--gold-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-.hero-year-desc {
+.hero-subject-desc {
     font-size: 1.1rem;
     color: var(--text-muted);
     line-height: 1.8;
@@ -339,14 +340,15 @@ body {
     margin: 0 auto 2rem;
 }
 
-.year-info-bar {
+.subject-stats-bar {
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    gap: 2rem;
     margin-top: 2rem;
+    flex-wrap: wrap;
 }
 
-.year-info-item {
+.subject-stat-item {
     display: flex;
     align-items: center;
     gap: 0.8rem;
@@ -356,54 +358,24 @@ body {
     border-radius: 12px;
 }
 
-.year-info-item i {
+.subject-stat-item i {
     color: var(--gold);
     font-size: 1.2rem;
 }
 
-.year-info-item span {
+.subject-stat-item span {
     color: var(--text-light);
     font-weight: 600;
 }
 
-.year-info-item small {
+.subject-stat-item small {
     color: var(--text-muted);
     font-size: 0.8rem;
     margin-right: 0.5rem;
 }
 
 
-/* Semesters Section */
-
-.semesters-section {
-    padding: 4rem 2rem;
-    position: relative;
-    z-index: 10;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.section-header h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    color: var(--parchment);
-    margin-bottom: 1rem;
-}
-
-.section-header p {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-}
-
-.section-line {
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold), transparent);
-    margin: 1.5rem auto;
-    border-radius: 2px;
-}
+/* Semester Tabs */
 
 .semester-tabs {
     display: flex;
@@ -416,13 +388,13 @@ body {
 
 .semester-tab {
     flex: 1;
-    padding: 1.2rem 2rem;
+    padding: 1rem 1.5rem;
     background: rgba(15, 23, 42, 0.6);
     border: 2px solid rgba(212, 175, 55, 0.1);
     border-radius: 16px;
     color: var(--text-muted);
     font-family: 'Tajawal', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.4s ease;
@@ -443,15 +415,15 @@ body {
 }
 
 .semester-tab[data-semester="1"]::before {
-    background: var(--semester1);
+    background: var(--exam);
 }
 
 .semester-tab[data-semester="2"]::before {
-    background: var(--semester2);
+    background: var(--homework);
 }
 
 .semester-tab[data-semester="3"]::before {
-    background: var(--semester3);
+    background: var(--revision);
 }
 
 .semester-tab:hover::before,
@@ -467,33 +439,18 @@ body {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
-.semester-tab.active[data-semester="1"] {
-    border-color: rgba(231, 76, 60, 0.4);
-    box-shadow: 0 15px 40px rgba(231, 76, 60, 0.1);
-}
-
-.semester-tab.active[data-semester="2"] {
-    border-color: rgba(52, 152, 219, 0.4);
-    box-shadow: 0 15px 40px rgba(52, 152, 219, 0.1);
-}
-
-.semester-tab.active[data-semester="3"] {
-    border-color: rgba(46, 204, 113, 0.4);
-    box-shadow: 0 15px 40px rgba(46, 204, 113, 0.1);
-}
-
 .semester-tab .tab-icon {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .semester-tab .tab-count {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
     font-weight: 400;
     display: block;
-    margin-top: 0.3rem;
+    margin-top: 0.2rem;
 }
 
 .semester-content {
@@ -517,17 +474,244 @@ body {
 }
 
 
-/* Subjects Grid */
+/* Documents Section */
 
-.subjects-grid {
+.documents-section {
+    padding: 2rem 2rem 4rem;
+    position: relative;
+    z-index: 10;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--parchment);
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.section-line {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 1.5rem auto;
+    border-radius: 2px;
+}
+
+.doc-filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.doc-filter {
+    padding: 0.6rem 1.2rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 50px;
+    color: var(--text-muted);
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.doc-filter:hover,
+.doc-filter.active {
+    background: var(--gold);
+    color: var(--void);
+    border-color: var(--gold);
+}
+
+.documents-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.doc-card {
+    background: var(--glass);
+    border: 1px solid rgba(212, 175, 55, 0.08);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+}
+
+.doc-card:hover {
+    background: rgba(212, 175, 55, 0.03);
+    border-color: rgba(212, 175, 55, 0.2);
+    transform: translateX(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.doc-icon-wrap {
+    width: 55px;
+    height: 55px;
+    min-width: 55px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s;
+}
+
+.doc-icon-wrap.exam {
+    background: rgba(231, 76, 60, 0.1);
+    color: var(--exam);
+}
+
+.doc-icon-wrap.homework {
+    background: rgba(52, 152, 219, 0.1);
+    color: var(--homework);
+}
+
+.doc-icon-wrap.exercise {
+    background: rgba(46, 204, 113, 0.1);
+    color: var(--exercise);
+}
+
+.doc-icon-wrap.revision {
+    background: rgba(243, 156, 18, 0.1);
+    color: var(--revision);
+}
+
+.doc-card:hover .doc-icon-wrap {
+    transform: scale(1.1);
+}
+
+.doc-info {
+    flex: 1;
+}
+
+.doc-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--parchment);
+    margin-bottom: 0.3rem;
+}
+
+.doc-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.doc-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.doc-meta i {
+    font-size: 0.8rem;
+}
+
+.doc-type-badge {
+    padding: 0.25rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.doc-type-badge.exam {
+    background: rgba(231, 76, 60, 0.15);
+    color: var(--exam);
+}
+
+.doc-type-badge.homework {
+    background: rgba(52, 152, 219, 0.15);
+    color: var(--homework);
+}
+
+.doc-type-badge.exercise {
+    background: rgba(46, 204, 113, 0.15);
+    color: var(--exercise);
+}
+
+.doc-type-badge.revision {
+    background: rgba(243, 156, 18, 0.15);
+    color: var(--revision);
+}
+
+.doc-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.doc-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    color: var(--gold);
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.doc-download-btn:hover {
+    background: var(--gold);
+    color: var(--void);
+    border-color: var(--gold);
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+}
+
+.doc-download-btn i {
+    font-size: 1rem;
+}
+
+.doc-size {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+
+/* Related Subjects */
+
+.related-section {
+    padding: 4rem 2rem;
+}
+
+.related-grid {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
 }
 
-.subject-card {
+.related-card {
     background: var(--glass);
     border: 1px solid rgba(212, 175, 55, 0.08);
     border-radius: 20px;
@@ -536,70 +720,57 @@ body {
     align-items: center;
     gap: 1.5rem;
     transition: all 0.4s ease;
-    cursor: pointer;
     backdrop-filter: blur(10px);
     text-decoration: none;
 }
 
-.subject-card:hover {
+.related-card:hover {
     background: rgba(212, 175, 55, 0.05);
     border-color: rgba(212, 175, 55, 0.3);
     transform: translateX(-10px) translateY(-5px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
-.subject-icon {
-    width: 60px;
-    height: 60px;
-    min-width: 60px;
+.related-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
     background: rgba(212, 175, 55, 0.1);
-    border-radius: 16px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: var(--gold);
     transition: all 0.3s;
 }
 
-.subject-card:hover .subject-icon {
+.related-card:hover .related-icon {
     background: var(--gold);
     color: var(--void);
 }
 
-.subject-info h4 {
-    font-size: 1.2rem;
+.related-info h4 {
+    font-size: 1.1rem;
     color: var(--parchment);
     margin-bottom: 0.3rem;
 }
 
-.subject-info p {
+.related-info p {
     font-size: 0.85rem;
     color: var(--text-muted);
 }
 
-.subject-arrow {
+.related-arrow {
     margin-right: auto;
     color: var(--gold);
     opacity: 0;
     transition: all 0.3s;
 }
 
-.subject-card:hover .subject-arrow {
+.related-card:hover .related-arrow {
     opacity: 1;
     transform: translateX(-5px);
-}
-
-.subject-count {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    padding: 0.2rem 0.8rem;
-    background: rgba(212, 175, 55, 0.1);
-    border-radius: 20px;
-    font-size: 0.75rem;
-    color: var(--gold);
-    margin-top: 0.5rem;
 }
 
 
@@ -866,14 +1037,27 @@ body {
     .mobile-toggle {
         display: block;
     }
-    .year-info-bar {
+    .breadcrumb {
+        padding: 5rem 1rem 1rem;
+        flex-wrap: wrap;
+    }
+    .subject-stats-bar {
         flex-direction: column;
         gap: 1rem;
     }
     .semester-tabs {
         flex-direction: column;
     }
-    .subjects-grid {
+    .doc-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    .doc-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    .related-grid {
         grid-template-columns: 1fr;
     }
     .footer-grid {
@@ -883,14 +1067,7 @@ body {
         flex-direction: column;
         text-align: center;
     }
-    .breadcrumb {
-        padding: 5rem 1rem 1rem;
-        flex-wrap: wrap;
-    }
 }
-
-
-/* Reveal */
 
 .reveal {
     opacity: 0;
