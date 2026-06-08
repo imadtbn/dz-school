@@ -16,12 +16,14 @@
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="googlebot" content="index, follow">
 
-    <link rel="canonical" href="https://success-platform.dz/">
+    <link rel="canonical" href="https://imadtbn.github.io/nadjah/">
     <meta name="theme-color" content="#0f172a">
     <!-- Favicon -->
 
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon32.png">
-    <link rel="apple-touch-icon" href="assets/images/icon32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon22.png">
+    <link rel="apple-touch-icon" href="assets/images/icon22.png">
+
+    <link rel="preload" as="image" href="assets/images/icon22.png" alt="icon" sizes="32x32" loading="lazy">
 
     <!-- Open Graph -->
     <meta property="og:locale" content="ar_DZ">
@@ -32,8 +34,8 @@
     <meta property="og:description"
         content="تحميل مجاني لفروض واختبارات مصححة PDF لجميع الأطوار التعليمية والمواد الدراسية في الجزائر.">
 
-    <meta property="og:url" content="https://success-platform.dz/">
-    <meta property="og:image" content="https://success-platform.dz/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://imadtbn.github.io/nadjah/">
+    <meta property="og:image" content="https://imadtbn.github.io/nadjah/assets/images/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="منصة النجاح التعليمية">
@@ -42,7 +44,13 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="منصة النجاح | فروض واختبارات مصححة PDF">
     <meta name="twitter:description" content="نماذج فروض واختبارات مصححة لجميع الأطوار التعليمية في الجزائر بصيغة PDF.">
-    <meta name="twitter:image" content="https://success-platform.dz/assets/images/og-image.jpg">
+    <meta name="twitter:image" content="https://success-platform.dz/assets/images/og-image.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="منصة النجاح | فروض واختبارات لجميع الأطوار التعليمية">
+    <meta property="og:description" content="تحميل فروض واختبارات مصححة PDF لجميع الأطوار التعليمية في الجزائر">
+    <meta property="og:image" content="https://imadtbn.github.io/nadjah/assets/images/cover.png">
+    <meta property="og:url" content="https://imadtbn.github.io/nadjah/">
 
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,17 +64,8 @@
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="preload" as="image" href="assets/images/icon32.png" alt="icon" sizes="32x32" loading="lazy">
-
     <link rel="stylesheet" href="assets/css/style-main.css">
     <link rel="stylesheet" href="assets/css/style-main2.css">
-
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="منصة النجاح | فروض واختبارات لجميع الأطوار التعليمية">
-    <meta property="og:description" content="تحميل فروض واختبارات مصححة PDF لجميع الأطوار التعليمية في الجزائر">
-    <meta property="og:image" content="https://example.com/assets/images/cover.jpg">
-    <meta property="og:url" content="https://example.com">
-
 
 </head>
 
@@ -74,7 +73,9 @@
     <!-- Loader -->
     <div class="loader" id="loader">
         <div class="loader-cube"></div>
-        <div class="loader-text">جاري التحميل...</div>
+        <div class="loader-text">بسم الله، جاري تحميل المنصة...</div>
+        <div class="loader-text">بالتوفيق يا أبطال</div>
+
     </div>
 
     <!--زر الرجوع للأعلى-->
@@ -110,7 +111,6 @@
             <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
         </div>
     </header>
-
 
     <!-- Hero Section -->
     <section class="hero">
@@ -204,11 +204,12 @@
                 <h3>الطور الابتدائي</h3>
                 <span class="years-count">5 سنوات تعليمية</span>
                 <div class="years-grid">
-                    <a href="reveal/primary/primry01.html" class="year-btn">الأولى</a>
-                    <a href="reveal/primary/primry01.html" class="year-btn">الثانية</a>
-                    <a href="reveal/primary/primry01.html" class="year-btn">الثالثة</a>
-                    <a href="reveal/primary/primry01.html" class="year-btn">الرابعة</a>
-                    <a href="reveal/primary/primry01.html" class="year-btn">الخامسة</a>
+                    <a href="levels/primary/pri01.html" class="year-btn">التحظيري</a>
+                    <a href="levels/primary/primry01.html" class="year-btn">الأولى</a>
+                    <a href="levels/primary/primry01.html" class="year-btn">الثانية</a>
+                    <a href="levels/primary/primry01.html" class="year-btn">الثالثة</a>
+                    <a href="levels/primary/primry01.html" class="year-btn">الرابعة</a>
+                    <a href="levels/primary/primry01.html" class="year-btn">الخامسة</a>
                 </div>
             </div>
 
@@ -222,6 +223,8 @@
                     <a href="#" class="year-btn">الثانية</a>
                     <a href="#" class="year-btn">الثالثة</a>
                     <a href="#" class="year-btn">الرابعة</a>
+                    <a href="#" class="year-btn">إمتحان المتوسط</a>
+
                 </div>
             </div>
 
@@ -234,6 +237,8 @@
                     <a href="#" class="year-btn">الأولى</a>
                     <a href="#" class="year-btn">الثانية</a>
                     <a href="#" class="year-btn">الثالثة</a>
+                    <a href="#" class="year-btn">إمتحان البكالوريا</a>
+
                 </div>
             </div>
 
@@ -254,72 +259,96 @@
         </div>
         <div class="subjects-grid">
 
-            <div class="subject-card reveal">
-                <div class="subject-icon"><i class="fas fa-language"></i></div>
+            <a href="levels/levels.html" class="subject-card reveal">
+                <div class="subject-icon">
+                    <i class="fas fa-language"></i>
+                </div>
                 <div class="subject-info">
-                    <a href="reveal/reveal.html"></a>
                     <h4>اللغة العربية</h4>
                     <p>نماذج في القراءة والإملاء والقواعد</p>
                 </div>
                 <i class="fas fa-chevron-left subject-arrow"></i>
-            </div>
+            </a>
 
-            <div class="subject-card reveal">
-                <div class="subject-icon"><i class="fas fa-globe"></i></div>
+            <a href="levels/levels.html" class="subject-card reveal">
+                <div class="subject-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
                 <div class="subject-info">
                     <h4>اللغة الأجنبية</h4>
                     <p>Français / English - نماذج شاملة</p>
                 </div>
                 <i class="fas fa-chevron-left subject-arrow"></i>
-            </div>
-            <div class="subject-card reveal">
-                <div class="subject-icon"><i class="fas fa-square-root-alt"></i></div>
+            </a>
+
+            <a href="levels/levels.html" class="subject-card reveal">
+                <div class="subject-icon">
+                    <i class="fas fa-square-root-alt"></i>
+                </div>
                 <div class="subject-info">
                     <h4>الرياضيات</h4>
                     <p>تمارين وحلول مفصلة</p>
                 </div>
                 <i class="fas fa-chevron-left subject-arrow"></i>
-            </div>
-            <div class="subject-card reveal">
-                <div class="subject-icon"><i class="fas fa-flask"></i></div>
+            </a>
+
+
+            <a href="levels/levels.html" class="subject-card reveal">
+                <div class="subject-icon">
+                    <i class="fas fa-flask"></i>
+                </div>
                 <div class="subject-info">
                     <h4>العلوم الطبيعية</h4>
                     <p>فروض واختبارات مع التصحيح</p>
                 </div>
                 <i class="fas fa-chevron-left subject-arrow"></i>
-            </div>
-            <div class="subject-card reveal">
-                <div class="subject-icon"><i class="fas fa-atom"></i></div>
+            </a>
+
+            <a href="levels/levels.html" class="subject-card reveal">
+                <div class="subject-icon">
+                    <i class="fas fa-atom"></i>
+                </div>
                 <div class="subject-info">
                     <h4>الفيزياء والكيمياء</h4>
                     <p>نماذج للطور الثانوي</p>
                 </div>
                 <i class="fas fa-chevron-left subject-arrow"></i>
-            </div>
-            <div class="subject-card reveal">
-                <div class="subject-icon"><i class="fas fa-dna"></i></div>
+            </a>
+
+            <a href="levels/levels.html" class="subject-card reveal">
+                <div class="subject-icon">
+                    <i class="fas fa-dna"></i>
+                </div>
                 <div class="subject-info">
                     <h4>علوم الحياة</h4>
                     <p>نماذج للطور الثانوي</p>
                 </div>
                 <i class="fas fa-chevron-left subject-arrow"></i>
-            </div>
-            <div class="subject-card reveal">
-                <div class="subject-icon"><i class="fas fa-history"></i></div>
+            </a>
+
+            <a href="levels/levels.html" class="subject-card reveal">
+                <div class="subject-icon">
+                    <i class="fas fa-quran"></i>
+                </div>
                 <div class="subject-info">
                     <h4>التربية الإسلامية</h4>
                     <p>نماذج في التربية والتعليمات</p>
                 </div>
                 <i class="fas fa-chevron-left subject-arrow"></i>
-            </div>
-            <div class="subject-card reveal">
-                <div class="subject-icon"><i class="fas fa-map-marked-alt"></i></div>
+            </a>
+
+            <a href="levels/levels.html" class="subject-card reveal">
+                <div class="subject-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
                 <div class="subject-info">
                     <h4>التاريخ والجغرافيا</h4>
                     <p>فروض واختبارات شاملة</p>
                 </div>
                 <i class="fas fa-chevron-left subject-arrow"></i>
-            </div>
+            </a>
+
+
         </div>
     </section>
 
@@ -553,6 +582,7 @@
                     <a href="#" class="social-link"><i class="fab fa-telegram-plane"></i></a>
                 </div>
             </div>
+
             <!-- Quick Links -->
             <div class="footer-section">
                 <h4>روابط سريعة</h4>
