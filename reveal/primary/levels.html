@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>منصة النجاح | الأطوار التعليمية</title>
+
+    <meta name="description"
+        content="منصة النجاح التعليمية توفر فروض واختبارات مصححة بصيغة PDF لجميع الأطوار التعليمية في الجزائر. تحميل مجاني لنماذج الفروض والاختبارات مع التصحيح النموذجي لجميع المواد الدراسية.">
+    <meta name="keywords"
+        content="منصة النجاح, فروض, اختبارات, فروض واختبارات, فروض واختبارات PDF, فروض ابتدائي, فروض متوسط, فروض ثانوي, اختبارات ابتدائي, اختبارات متوسط, اختبارات ثانوي, فروض مع التصحيح, اختبارات مع الحل, نماذج تعليمية, تحميل PDF, التعليم في الجزائر, السنة الأولى ابتدائي, السنة الثانية ابتدائي, السنة الثالثة ابتدائي, السنة الرابعة ابتدائي, السنة الخامسة ابتدائي, الأولى متوسط, الثانية متوسط, الثالثة متوسط, الرابعة متوسط, الأولى ثانوي, الثانية ثانوي, الثالثة ثانوي">
+    <meta name="author" content="منصة النجاح">
+    <meta name="language" content="Arabic">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="googlebot" content="index, follow">
+
+    <link rel="canonical" href="https://imadtbn.github.io/nadjah/">
+    <meta name="theme-color" content="#0f172a">
+    <!-- Favicon -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/icon22.png">
+    <link rel="apple-touch-icon" href="../assets/images/icon22.png">
+
+    <link rel="preload" as="image" href="../assets/images/icon22.png" alt="icon" sizes="32x32" loading="lazy">
+
+    <!-- Open Graph -->
+    <meta property="og:locale" content="ar_DZ">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="منصة النجاح">
+
+    <meta property="og:title" content="منصة النجاح | فروض واختبارات مصححة PDF لجميع الأطوار التعليمية">
+    <meta property="og:description"
+        content="تحميل مجاني لفروض واختبارات مصححة PDF لجميع الأطوار التعليمية والمواد الدراسية في الجزائر.">
+
+    <meta property="og:url" content="https://imadtbn.github.io/nadjah/">
+    <meta property="og:image" content="https://imadtbn.github.io/nadjah/assets/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="منصة النجاح التعليمية">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="منصة النجاح | فروض واختبارات مصححة PDF">
+    <meta name="twitter:description" content="نماذج فروض واختبارات مصححة لجميع الأطوار التعليمية في الجزائر بصيغة PDF.">
+    <meta name="twitter:image" content="https://success-platform.dz/assets/images/og-image.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="منصة النجاح | فروض واختبارات لجميع الأطوار التعليمية">
+    <meta property="og:description" content="تحميل فروض واختبارات مصححة PDF لجميع الأطوار التعليمية في الجزائر">
+    <meta property="og:image" content="https://imadtbn.github.io/nadjah/assets/images/cover.png">
+    <meta property="og:url" content="https://imadtbn.github.io/nadjah/">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link rel="stylesheet" href="../assets/css/style-main.css">
+    <link rel="stylesheet" href="../assets/css/style-main2.css">
+
+</head>
+
+<body>
+
+    <!--زر الرجوع للأعلى-->
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="العودة للأعلى">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Three.js Shader Background -->
+    <canvas id="shader-canvas"></canvas>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/icon22.png" alt="أيقونة منصة النجاح" class="logo-img" width="70" height="70"
+                    loading="eager">
+                <div class="logo-text">منصة <span>النجاح</span></div>
+            </a>
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-box" placeholder="ابحث عن نموذج، مادة، أو سنة دراسية...">
+            </div>
+            <nav class="nav-links">
+                <a href="../index.html">الرئيسية</a>
+                <a href="../index.html#subjects">المواد</a>
+                <a href="../index.html#resources">النماذج</a>
+                <a href="../index.html#contact">تواصل</a>
+            </nav>
+            <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <canvas id="starfield"></canvas>
+        <div class="hero-content">
+            <div class="hero-badge">منصة تعليمية شاملة</div>
+            <h1 class="hero-title">
+                <span class="highlight">الأطوار</span><br>التعليمية
+            </h1>
+            <p class="hero-desc">
+                احصل على نماذج الفروض والاختبارات المصححة بصيغة PDF لجميع المواد الدراسية من الابتدائي إلى الثانوي
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="500">0</span>
+                    <span class="stat-label">نموذج متاح</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="12">0</span>
+                    <span class="stat-label">سنة دراسية</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="20">0</span>
+                    <span class="stat-label">مادة دراسية</span>
+                </div>
+            </div>
+            <a href="#levels" class="hero-cta">
+                <span>استكشف الأطوار التعليمية</span>
+                <i class="fas fa-arrow-down"></i>
+            </a>
+        </div>
+    </section>
+
+
+
+    <!-- Ad Slot 1 -->
+    <div class="ad-slot">
+        <span class="ad-label">إعلان</span>
+        <div class="ad-content">
+            <span>مساحة إعلانية - Google Ads (728x90)</span>
+        </div>
+    </div>
+
+    <!-- Education Levels -->
+    <section class="levels-section" id="levels">
+        <div class="section-header reveal">
+            <h2>الأطوار التعليمية</h2>
+            <div class="section-line"></div>
+            <p>اختر الطور التعليمي والسنة الدراسية للوصول إلى النماذج</p>
+        </div>
+        <div class="levels-grid">
+
+            <!-- Primary -->
+            <div class="level-card reveal">
+                <div class="level-icon"><i class="fas fa-child"></i></div>
+                <h3>الطور الابتدائي</h3>
+                <span class="years-count">5 سنوات تعليمية</span>
+                <div class="years-grid">
+                    <a href="levels/primary/pri01.html" class="year-btn">التحظيري</a>
+                    <a href="primary/primry01.html" class="year-btn">الأولى</a>
+                    <a href="reveal/primary/primry01.html" class="year-btn">الثانية</a>
+                    <a href="reveal/primary/primry01.html" class="year-btn">الثالثة</a>
+                    <a href="reveal/primary/primry01.html" class="year-btn">الرابعة</a>
+                    <a href="reveal/primary/primry01.html" class="year-btn">الخامسة</a>
+                </div>
+            </div>
+
+            <!-- Middle -->
+            <div class="level-card reveal">
+                <div class="level-icon"><i class="fas fa-user-graduate"></i></div>
+                <h3>الطور المتوسط</h3>
+                <span class="years-count">4 سنوات تعليمية</span>
+                <div class="years-grid">
+                    <a href="primary/primry01.html" class="year-btn">التحظيري</a>
+                    <a href="primary/primry01.html" class="year-btn">الأولى</a>
+                    <a href="#" class="year-btn">الثانية</a>
+                    <a href="#" class="year-btn">الثالثة</a>
+                    <a href="#" class="year-btn">الرابعة</a>
+                    <a href="#" class="year-btn">إمتحان المتوسط</a>
+                </div>
+            </div>
+
+            <!-- Secondary -->
+            <div class="level-card reveal">
+                <div class="level-icon"><i class="fas fa-university"></i></div>
+                <h3>الطور الثانوي</h3>
+                <span class="years-count">3 سنوات تعليمية</span>
+                <div class="years-grid">
+                    <a href="#" class="year-btn">الأولى</a>
+                    <a href="#" class="year-btn">الثانية</a>
+                    <a href="#" class="year-btn">الثالثة</a>
+                    <a href="#" class="year-btn">إمتحان البكالوريا</a>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Ad Banner -->
+    <div class="ad-banner">
+        مساحة إعلانية - Google Ads (Responsive)
+    </div>
+
+    <!-- Resources Section -->
+    <section class="resources-section" id="resources">
+        <div class="section-header reveal">
+            <h2>أحدث النماذج المتاحة</h2>
+            <div class="section-line"></div>
+            <p>نماذج الفروض والاختبارات مع التصحيح</p>
+        </div>
+        <div class="resources-grid">
+            <div class="resource-card reveal">
+                <div class="resource-header">
+                    <i class="fas fa-file-pdf"></i>
+                    <h4>فروض المرحلة الابتدائية</h4>
+                </div>
+                <div class="resource-list">
+                    <div class="resource-item">
+                        <div class="resource-name">
+                            <i class="fas fa-file-alt"></i>
+                            <span>فرض اللغة العربية - السنة 3</span>
+                        </div>
+                        <a href="#" class="download-btn"><i class="fas fa-download"></i> PDF</a>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">
+                            <i class="fas fa-file-alt"></i>
+                            <span>فرض الرياضيات - السنة 4</span>
+                        </div>
+                        <a href="#" class="download-btn"><i class="fas fa-download"></i> PDF</a>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">
+                            <i class="fas fa-file-alt"></i>
+                            <span>فرض العلوم - السنة 5</span>
+                        </div>
+                        <a href="#" class="download-btn"><i class="fas fa-download"></i> PDF</a>
+                    </div>
+                </div>
+            </div>
+            <div class="resource-card reveal">
+                <div class="resource-header">
+                    <i class="fas fa-file-pdf"></i>
+                    <h4>اختبارات المرحلة المتوسطة</h4>
+                </div>
+                <div class="resource-list">
+                    <div class="resource-item">
+                        <div class="resource-name">
+                            <i class="fas fa-file-alt"></i>
+                            <span>اختبار الفيزياء - السنة 2</span>
+                        </div>
+                        <a href="#" class="download-btn"><i class="fas fa-download"></i> PDF</a>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">
+                            <i class="fas fa-file-alt"></i>
+                            <span>اختبار الرياضيات - السنة 3</span>
+                        </div>
+                        <a href="#" class="download-btn"><i class="fas fa-download"></i> PDF</a>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">
+                            <i class="fas fa-file-alt"></i>
+                            <span>اختبار اللغة الفرنسية - السنة 4</span>
+                        </div>
+                        <a href="#" class="download-btn"><i class="fas fa-download"></i> PDF</a>
+                    </div>
+                </div>
+            </div>
+            <div class="resource-card reveal">
+                <div class="resource-header">
+                    <i class="fas fa-file-pdf"></i>
+                    <h4>نماذج البكالوريا</h4>
+                </div>
+                <div class="resource-list">
+                    <div class="resource-item">
+                        <div class="resource-name">
+                            <i class="fas fa-file-alt"></i>
+                            <span>نموذج بكالوريا رياضيات</span>
+                        </div>
+                        <a href="#" class="download-btn"><i class="fas fa-download"></i> PDF</a>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">
+                            <i class="fas fa-file-alt"></i>
+                            <span>نموذج بكالوريا علوم تجريبية</span>
+                        </div>
+                        <a href="#" class="download-btn"><i class="fas fa-download"></i> PDF</a>
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-name">
+                            <i class="fas fa-file-alt"></i>
+                            <span>نموذج بكالوريا آداب وفلسفة</span>
+                        </div>
+                        <a href="#" class="download-btn"><i class="fas fa-download"></i> PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Banner Bottom -->
+    <div class="ad-banner">
+        مساحة إعلانية - Google Ads (Responsive)
+    </div>
+
+    <!-- دليل منصة النجاح -->
+    <section class="success-guide-section">
+        <div class="section-header reveal">
+            <h2>دليل منصة النجاح التعليمية</h2>
+            <div class="section-line"></div>
+            <p>كل ما تحتاج معرفته للاستفادة من النماذج التعليمية والفروض والاختبارات المصححة.</p>
+        </div>
+
+        <!-- بطاقات تحفيزية -->
+
+        <div class="motivation-grid">
+
+            <div class="motivation-card">
+                <i class="fas fa-trophy"></i>
+                <h3>التفوق يبدأ بالتحضير</h3>
+                <p>المراجعة المنتظمة وحل النماذج السابقة من أفضل الطرق لتحقيق نتائج متميزة.</p>
+            </div>
+
+            <div class="motivation-card">
+                <i class="fas fa-book-reader"></i>
+                <h3>التعلم بالممارسة</h3>
+                <p>التدريب المستمر على الفروض والاختبارات يساعد على اكتساب الثقة وتحسين الأداء.</p>
+            </div>
+
+            <div class="motivation-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>طريقك نحو النجاح</h3>
+                <p>استفد من النماذج المصححة لفهم منهجية الحل واكتساب مهارات جديدة.</p>
+            </div>
+
+        </div>
+
+        <div class="guide-content">
+
+            <h3>طريقة تحميل النماذج التعليمية</h3>
+
+            <p>
+                توفر منصة النجاح طريقة سهلة وسريعة للوصول إلى مختلف الفروض والاختبارات التعليمية.
+                يمكن للطالب اختيار الطور التعليمي المناسب ثم الانتقال إلى السنة الدراسية المطلوبة،
+                وبعد ذلك اختيار المادة الدراسية للوصول إلى جميع النماذج المتوفرة. يتم توفير الملفات
+                بصيغة PDF عالية الجودة حتى يتمكن التلميذ أو الأستاذ من تحميلها وطباعتها بسهولة.
+                كما يتم تحديث المحتوى بشكل دوري لإضافة نماذج جديدة ومواكبة البرامج التعليمية المعتمدة.
+            </p>
+
+            <h3>الأطوار التعليمية المتوفرة</h3>
+
+            <p>
+                تغطي منصة النجاح جميع الأطوار التعليمية المعتمدة في الجزائر. بداية من الطور الابتدائي
+                الذي يشمل السنوات الخمس الأولى من المسار الدراسي، مرورًا بالطور المتوسط الذي يضم أربع
+                سنوات تعليمية أساسية، وصولاً إلى الطور الثانوي بمختلف شعبه ومستوياته. يتيح هذا التنوع
+                للمتعلمين وأولياء الأمور والأساتذة الوصول إلى محتوى مناسب لكل مستوى دراسي دون الحاجة
+                إلى البحث في مواقع متعددة.
+            </p>
+
+            <p>
+                تم تنظيم المحتوى بطريقة تساعد المستخدم على الوصول السريع إلى السنة الدراسية المطلوبة،
+                مما يوفر تجربة استخدام مريحة سواء على الحاسوب أو الهاتف المحمول. كما يتم تصنيف النماذج
+                حسب الفصل الدراسي ونوع التقييم لضمان سهولة التصفح والعثور على المحتوى المناسب.
+            </p>
+
+            <h3>المواد الدراسية المتاحة</h3>
+
+            <p>
+                تضم المنصة مجموعة واسعة من المواد الدراسية الأساسية، مثل اللغة العربية والرياضيات
+                واللغة الفرنسية واللغة الإنجليزية والعلوم الطبيعية والفيزياء والتاريخ والجغرافيا
+                والتربية الإسلامية وغيرها من المواد التعليمية المعتمدة. ويتم توفير فروض واختبارات
+                متنوعة مع التصحيح النموذجي لمساعدة التلاميذ على تقييم مستواهم واكتشاف نقاط القوة
+                والجوانب التي تحتاج إلى تحسين.
+            </p>
+
+            <p>
+                تعتمد النماذج المنشورة على أساليب تقييم حديثة ومتنوعة تشمل التمارين التطبيقية والأسئلة
+                المباشرة والاختبارات الشاملة، مما يساعد المتعلم على اكتساب الخبرة اللازمة للتعامل مع
+                مختلف أنواع الأسئلة خلال الامتحانات الرسمية.
+            </p>
+
+            <h3>لماذا منصة النجاح؟</h3>
+
+            <p>
+                تهدف منصة النجاح إلى توفير محتوى تعليمي مجاني وعالي الجودة لجميع المتعلمين. وتتميز
+                المنصة بسهولة الاستخدام وسرعة الوصول إلى الملفات وتنظيم المحتوى بطريقة احترافية. كما
+                تساهم النماذج المصححة في فهم منهجية الإجابة الصحيحة وتحسين مهارات التحليل والاستنتاج،
+                مما يساعد على رفع المستوى الدراسي وتحقيق نتائج أفضل في الفروض والاختبارات والامتحانات
+                الرسمية.
+            </p>
+
+            <p>
+                نسعى باستمرار إلى إثراء المحتوى التعليمي وإضافة نماذج جديدة تغطي مختلف المستويات
+                والمواد الدراسية، مع الحرص على توفير تجربة استخدام متكاملة ومتوافقة مع جميع الأجهزة.
+                هدفنا هو أن تكون منصة النجاح مرجعًا تعليميًا موثوقًا لكل طالب يبحث عن التميز والتفوق
+                الدراسي.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-grid">
+            <!-- Brand -->
+            <div class="footer-brand">
+                <a href="../index.html" class="logo">
+                    <div class="logo-icon">
+                        <img src="../assets/images/icon22.png" alt="أيقونة منصة النجاح" class="footer-logo-img"
+                            width="70" height="70" loading="lazy">
+                    </div>
+                    <div class="logo-text">منصة <span>النجاح</span></div>
+                </a>
+                <p>منصة تعليمية شاملة تقدم نماذج الفروض والاختبارات المصححة لجميع الأطوار التعليمية. هدفنا مساعدة الطلاب
+                    على التحصيل الدراسي المتميز.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h4>روابط سريعة</h4>
+                <ul class="footer-links">
+                    <li><a href="../index.html"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                    <li><a href="#levels"><i class="fas fa-chevron-left"></i> الأطوار التعليمية</a></li>
+                    <li><a href="#resources"><i class="fas fa-chevron-left"></i> النماذج والتحميلات</a></li>
+                    <li><a href="../pages/about.html"><i class="fas fa-chevron-left"></i> من نحن</a></li>
+                    <li><a href="../pages/contact.html"><i class="fas fa-chevron-left"></i> إتصل بنا</a></li>
+                    <li><a href="../pages/privacy.html"><i class="fas fa-chevron-left"></i> سياسة الخصوصية</a></li>
+                    <li><a href="../pages/terms.html"><i class="fas fa-chevron-left"></i> شروط الاستخدام</a></li>
+                    <li><a href="../pages/disclaimer.html"><i class="fas fa-chevron-left"></i> إخلاء المسؤولية</a></li>
+                    <li><a href="../pages/dmca.html"><i class="fas fa-chevron-left"></i> DMCA</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h4>معلومات التواصل</h4>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>الجزائر العاصمة، الجزائر</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contact@manassat-taalem.dz</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+213 555 123 456</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>متاح 24/7</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2026 منصة النجاح</p>
+            <p>صنع بـ <i class="fas fa-heart heart"></i> للتعليم</p>
+        </div>
+    </footer>
+
+    <script defer src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
