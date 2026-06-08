@@ -1079,3 +1079,146 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* ===== PDF ACTIONS ===== */
+
+.doc-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    margin-top: .8rem;
+}
+
+.doc-preview-btn,
+.doc-print-btn {
+
+    border: none;
+    cursor: pointer;
+
+    padding: .8rem 1rem;
+
+    border-radius: 12px;
+
+    font-size: .9rem;
+    font-weight: 600;
+
+    transition: .3s ease;
+
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+/* معاينة */
+
+.doc-preview-btn {
+
+    background: rgba(59,130,246,.15);
+
+    color: #60a5fa;
+
+    border: 1px solid rgba(59,130,246,.25);
+}
+
+.doc-preview-btn:hover {
+
+    transform: translateY(-2px);
+
+    background: rgba(59,130,246,.25);
+}
+
+/* طباعة */
+
+.doc-print-btn {
+
+    background: rgba(212,175,55,.15);
+
+    color: var(--gold);
+
+    border: 1px solid rgba(212,175,55,.25);
+}
+
+.doc-print-btn:hover {
+
+    transform: translateY(-2px);
+
+    background: rgba(212,175,55,.25);
+}
+
+/* نافذة PDF */
+
+.pdf-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.85);
+
+    backdrop-filter: blur(10px);
+
+    z-index: 99999;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 1rem;
+}
+
+.pdf-modal.active {
+
+    display: flex;
+}
+
+.pdf-modal-content {
+
+    width: 95%;
+    max-width: 1200px;
+
+    height: 90vh;
+
+    background: #111827;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(212,175,55,.2);
+
+    position: relative;
+}
+
+#pdfViewer {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+}
+
+.pdf-close {
+
+    position: absolute;
+
+    top: 15px;
+    left: 15px;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    cursor: pointer;
+
+    background: rgba(212,175,55,.15);
+
+    color: var(--gold);
+
+    z-index: 10;
+}
