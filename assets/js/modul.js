@@ -239,3 +239,22 @@ document.querySelector('.search-box').addEventListener('input', (e) => {
         card.style.display = text.includes(query) || query === '' ? 'flex' : 'none';
     });
 });
+
+
+// ========== المعاينة والطباعة ==========
+function previewPDF(url) {
+
+    document.getElementById("pdfViewer").src = url;
+
+    document.getElementById("pdfModal")
+        .classList.add("active");
+}
+
+function closePDFPreview() {
+
+    document.getElementById("pdfModal")
+        .classList.remove("active");
+
+    document.getElementById("pdfViewer").src = "";
+}
+

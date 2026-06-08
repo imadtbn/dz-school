@@ -2,7 +2,7 @@
 window.addEventListener('load', () => {
     setTimeout(() => {
         document.getElementById('loader').classList.add('hidden');
-    }, 1500);
+    }, 900);
 });
 
 // ========== LENIS SMOOTH SCROLL ==========
@@ -334,4 +334,24 @@ gsap.to('.hero-content', {
         end: 'bottom top',
         scrub: true
     }
+});
+
+
+// ========== زر الرجوع للأعلى ==========
+
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+        scrollTopBtn.classList.add("show");
+    } else {
+        scrollTopBtn.classList.remove("show");
+    }
+});
+
+scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 });
