@@ -192,26 +192,23 @@
 
         <!-- Semester 1 Documents -->
         <div class="semester-content" id="semester-1">
-            <div class="documents-grid" id="latest-documents">
+            <div class="documents-grid" id="latest-documents-1">
                 <div class="documents-grid">
                     <div class="loading-docs">
                         جاري تحميل المواضيع...
                     </div>
-
                 </div>
-
                 <div class="more-container">
                     <a href="p1_smst1_arabic-more.html" class="btn-more">
                         استكشف المزيد
                     </a>
                 </div>
-
             </div>
         </div>
 
         <!-- Semester 2 Documents -->
         <div class="semester-content" id="semester-2">
-            <div class="documents-grid" id="latest-documents">
+            <div class="documents-grid" id="latest-documents-2">
                 <div class="documents-grid">
                     <div class="loading-docs">
                         جاري تحميل المواضيع...
@@ -228,7 +225,7 @@
 
         <!-- Semester 3 Documents -->
         <div class="semester-content" id="semester-3">
-            <div class="documents-grid" id="latest-documents">
+            <div class="documents-grid" id="latest-documents-3">
                 <div class="documents-grid">
                     <div class="loading-docs">
                         جاري تحميل المواضيع...
@@ -377,13 +374,16 @@
     <script defer src="../../../assets/js/modul.js"></script>
 
 
-    <!--جلب بيانات الصفحة p1_smst1_arabic-->
     <script>
-        async function loadLatestDocuments() {
+        async function loadDocuments(file, containerId) {
 
             try {
 
-                const response = await fetch('p1_smst1_arabic-more.html');
+                const response = await fetch(file);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP Error: ${response.status}`);
+                }
 
                 const html = await response.text();
 
@@ -394,7 +394,7 @@
                 const cards = doc.querySelectorAll('.doc-card');
 
                 const container =
-                    document.getElementById('latest-documents');
+                    document.getElementById(containerId);
 
                 container.innerHTML = '';
 
@@ -410,95 +410,30 @@
 
             } catch (error) {
 
-                console.error(error);
+                console.error(
+                    `خطأ في تحميل ${file}`,
+                    error
+                );
 
             }
         }
 
-        loadLatestDocuments();
+        loadDocuments(
+            'p1_smst1_arabic-more.html',
+            'latest-documents-1'
+        );
+
+        loadDocuments(
+            'p1_smst2_arabic-more.html',
+            'latest-documents-2'
+        );
+
+        loadDocuments(
+            'p1_smst3_arabic-more.html',
+            'latest-documents-3'
+        );
     </script>
 
-    <!--جلب بيانات الصفحة p1_smst2_arabic-->
-    <script>
-        async function loadLatestDocuments() {
-
-            try {
-
-                const response = await fetch('p1_smst2_arabic-more.html');
-
-                const html = await response.text();
-
-                const parser = new DOMParser();
-
-                const doc = parser.parseFromString(html, 'text/html');
-
-                const cards = doc.querySelectorAll('.doc-card');
-
-                const container =
-                    document.getElementById('latest-documents');
-
-                container.innerHTML = '';
-
-                [...cards]
-                    .slice(0, 6)
-                    .forEach(card => {
-
-                        container.appendChild(
-                            card.cloneNode(true)
-                        );
-
-                    });
-
-            } catch (error) {
-
-                console.error(error);
-
-            }
-        }
-
-        loadLatestDocuments();
-    </script>
-
-    <!--جلب بيانات الصفحة p1_smst3_arabic-->
-    <script>
-        async function loadLatestDocuments() {
-
-            try {
-
-                const response = await fetch('p1_smst3_arabic-more.html');
-
-                const html = await response.text();
-
-                const parser = new DOMParser();
-
-                const doc = parser.parseFromString(html, 'text/html');
-
-                const cards = doc.querySelectorAll('.doc-card');
-
-                const container =
-                    document.getElementById('latest-documents');
-
-                container.innerHTML = '';
-
-                [...cards]
-                    .slice(0, 6)
-                    .forEach(card => {
-
-                        container.appendChild(
-                            card.cloneNode(true)
-                        );
-
-                    });
-
-            } catch (error) {
-
-                console.error(error);
-
-            }
-        }
-
-        loadLatestDocuments();
-    </script>
 </body>
 
 </html>
