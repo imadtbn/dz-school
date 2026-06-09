@@ -192,31 +192,53 @@
 
         <!-- Semester 1 Documents -->
         <div class="semester-content" id="semester-1">
-            <div class="documents-grid" id="semester1-grid">
-                <div class="loading-docs">جاري تحميل مواضيع الفصل الأول...</div>
-            </div>
-            <div class="more-container">
-                <a href="p1_smst1_arabic-more.html" class="btn-more">استكشف المزيد</a>
+            <div class="documents-grid" id="latest-documents">
+                <div class="documents-grid">
+                    <div class="loading-docs">
+                        جاري تحميل المواضيع...
+                    </div>
+
+                </div>
+
+                <div class="more-container">
+                    <a href="p1_smst1_arabic-more.html" class="btn-more">
+                        استكشف المزيد
+                    </a>
+                </div>
+
             </div>
         </div>
 
         <!-- Semester 2 Documents -->
         <div class="semester-content" id="semester-2">
-            <div class="documents-grid" id="semester2-grid">
-                <div class="loading-docs">جاري تحميل مواضيع الفصل الثاني...</div>
+            <div class="documents-grid" id="latest-documents">
+                <div class="documents-grid">
+                    <div class="loading-docs">
+                        جاري تحميل المواضيع...
+                    </div>
+                </div>
             </div>
+
             <div class="more-container">
-                <a href="p1_smst2_arabic-more.html" class="btn-more">استكشف المزيد</a>
+                <a href="p1_smst2_arabic-more.html" class="btn-more">
+                    استكشف المزيد
+                </a>
             </div>
         </div>
 
         <!-- Semester 3 Documents -->
         <div class="semester-content" id="semester-3">
-            <div class="documents-grid" id="semester3-grid">
-                <div class="loading-docs">جاري تحميل مواضيع الفصل الثالث...</div>
-            </div>
-            <div class="more-container">
-                <a href="p1_smst3_arabic-more.html" class="btn-more">استكشف المزيد</a>
+            <div class="documents-grid" id="latest-documents">
+                <div class="documents-grid">
+                    <div class="loading-docs">
+                        جاري تحميل المواضيع...
+                    </div>
+                </div>
+                <div class="more-container">
+                    <a href="p1_smst3_arabic-more.html" class="btn-more">
+                        استكشف المزيد
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -354,143 +376,129 @@
 
     <script defer src="../../../assets/js/modul.js"></script>
 
+
+    <!--جلب بيانات الصفحة p1_smst1_arabic-->
     <script>
-        // ========== تحميل محتويات الفصول ديناميكيًا (بطريقة احترافية) ==========
-        const semesterConfigs = [
-            { semester: 1, gridId: 'semester1-grid', morePage: 'p1_smst1_arabic-more.html' },
-            { semester: 2, gridId: 'semester2-grid', morePage: 'p1_smst2_arabic-more.html' },
-            { semester: 3, gridId: 'semester3-grid', morePage: 'p1_smst3_arabic-more.html' }
-        ];
-
-        // تحميل البيانات لفصل معين مع عرض رسالة "جاري التحميل"
-        async function loadSemesterDocuments(semesterNum, gridId, morePageUrl) {
-            const gridContainer = document.getElementById(gridId);
-            if (!gridContainer) return;
-
-            // عرض حالة التحميل
-            gridContainer.innerHTML = '<div class="loading-docs"><i class="fas fa-spinner fa-spin"></i> جاري تحميل المواضيع...</div>';
+        async function loadLatestDocuments() {
 
             try {
-                // تحديد صفحة المصدر حسب الفصل (نستخدم الفصل الأول كمثال، لكن يمكن تعديل المسارات حسب الحاجة)
-                let sourcePage = '';
-                if (semesterNum === 1) sourcePage = 'p1_smst1_arabic-more.html';
-                else if (semesterNum === 2) sourcePage = 'p1_smst2_arabic-more.html';
-                else sourcePage = 'p1_smst3_arabic-more.html';
 
-                const response = await fetch(sourcePage);
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const response = await fetch('p1_smst1_arabic-more.html');
+
                 const html = await response.text();
+
                 const parser = new DOMParser();
+
                 const doc = parser.parseFromString(html, 'text/html');
+
                 const cards = doc.querySelectorAll('.doc-card');
 
-                if (cards.length === 0) {
-                    gridContainer.innerHTML = '<div class="error-docs">⚠️ لا توجد مواضيع متاحة حالياً.</div>';
-                    return;
-                }
+                const container =
+                    document.getElementById('latest-documents');
 
-                // أخذ أول 6 بطاقات فقط
-                const limitedCards = [...cards].slice(0, 6);
-                gridContainer.innerHTML = '';
-                limitedCards.forEach(card => {
-                    // إعادة تفعيل أحداث المعاينة والتحميل داخل البطاقة المستنسخة
-                    const clonedCard = card.cloneNode(true);
-                    // ربط دالة المعاينة والتحميل من جديد (لأن العناصر المستنسخة تفقد المستمعات)
-                    attachDocEvents(clonedCard);
-                    gridContainer.appendChild(clonedCard);
-                });
+                container.innerHTML = '';
 
-                // بعد تحميل البطاقات، إعادة تطبيق تأثير الـ reveal بشكل يدوي
-                if (typeof gsap !== 'undefined') {
-                    gridContainer.querySelectorAll('.doc-card').forEach(card => {
-                        gsap.fromTo(card, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' });
+                [...cards]
+                    .slice(0, 6)
+                    .forEach(card => {
+
+                        container.appendChild(
+                            card.cloneNode(true)
+                        );
+
                     });
-                }
+
             } catch (error) {
-                console.error(`فشل تحميل الفصل ${semesterNum}:`, error);
-                gridContainer.innerHTML = '<div class="error-docs">⚠️ حدث خطأ أثناء التحميل. يرجى تحديث الصفحة.</div>';
+
+                console.error(error);
+
             }
         }
 
-        // إعادة ربط أحداث المعاينة والتحميل بالبطاقات المستنسخة
-        function attachDocEvents(cardElement) {
-            // زر المعاينة
-            const previewBtn = cardElement.querySelector('.doc-preview-btn');
-            if (previewBtn && typeof previewPDF === 'function') {
-                const originalOnclick = previewBtn.getAttribute('onclick');
-                if (originalOnclick) {
-                    previewBtn.removeAttribute('onclick');
-                    previewBtn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const match = originalOnclick.match(/previewPDF\(['"]([^'"]+)['"]\)/);
-                        if (match && match[1]) previewPDF(match[1]);
-                    });
-                }
-            }
-
-            // رابط التحميل
-            const downloadLink = cardElement.querySelector('.doc-download-btn');
-            if (downloadLink && downloadLink.getAttribute('href') && downloadLink.getAttribute('href') !== '#') {
-                // الاحتفاظ بالحدث الأصلي إذا كان موجوداً
-                if (typeof downloadDoc === 'function') {
-                    downloadLink.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        downloadDoc(downloadLink);
-                        // محاكاة التحميل الفعلي (اختياري)
-                        setTimeout(() => { window.location.href = downloadLink.getAttribute('href'); }, 500);
-                    });
-                }
-            }
-        }
-
-        // تحميل الفصل النشط فقط عند بدء التشغيل (الفصل الأول)
-        let loadedSemesters = { 1: false, 2: false, 3: false };
-
-        function loadActiveSemester() {
-            const activeSemester = document.querySelector('.semester-content.active');
-            if (!activeSemester) return;
-            const semesterId = activeSemester.id; // مثل "semester-1"
-            const semesterNum = parseInt(semesterId.split('-')[1]);
-            const config = semesterConfigs.find(c => c.semester === semesterNum);
-            if (config && !loadedSemesters[semesterNum]) {
-                loadSemesterDocuments(semesterNum, config.gridId, config.morePage);
-                loadedSemesters[semesterNum] = true;
-            }
-        }
-
-        // استدعاء تحميل الفصل الأول فور تحميل الصفحة
-        document.addEventListener('DOMContentLoaded', () => {
-            loadActiveSemester();
-        });
-
-        // عند التبديل بين علامات التبويب (الفصول)، تحميل المحتوى عند الحاجة
-        const originalSwitchSemester = window.switchSemester;
-        window.switchSemester = function (num) {
-            if (originalSwitchSemester) originalSwitchSemester(num);
-            const config = semesterConfigs.find(c => c.semester === num);
-            if (config && !loadedSemesters[num]) {
-                loadSemesterDocuments(num, config.gridId, config.morePage);
-                loadedSemesters[num] = true;
-            }
-        };
-
-        // تعديل دالة الفلترة لتعمل على البطاقات المحملة ديناميكيًا
-        const originalFilterDocs = window.filterDocs;
-        window.filterDocs = function (type) {
-            if (originalFilterDocs) originalFilterDocs(type);
-            // بعد التصفية، نضمن تطبيق GSAP على البطاقات الظاهرة
-            setTimeout(() => {
-                const activeGrid = document.querySelector('.semester-content.active .documents-grid');
-                if (activeGrid && typeof gsap !== 'undefined') {
-                    activeGrid.querySelectorAll('.doc-card[style*="display: flex"]').forEach(card => {
-                        gsap.fromTo(card, { opacity: 0, scale: 0.98 }, { opacity: 1, scale: 1, duration: 0.3 });
-                    });
-                }
-            }, 50);
-        };
+        loadLatestDocuments();
     </script>
 
+    <!--جلب بيانات الصفحة p1_smst2_arabic-->
+    <script>
+        async function loadLatestDocuments() {
 
+            try {
+
+                const response = await fetch('p1_smst2_arabic-more.html');
+
+                const html = await response.text();
+
+                const parser = new DOMParser();
+
+                const doc = parser.parseFromString(html, 'text/html');
+
+                const cards = doc.querySelectorAll('.doc-card');
+
+                const container =
+                    document.getElementById('latest-documents');
+
+                container.innerHTML = '';
+
+                [...cards]
+                    .slice(0, 6)
+                    .forEach(card => {
+
+                        container.appendChild(
+                            card.cloneNode(true)
+                        );
+
+                    });
+
+            } catch (error) {
+
+                console.error(error);
+
+            }
+        }
+
+        loadLatestDocuments();
+    </script>
+
+    <!--جلب بيانات الصفحة p1_smst3_arabic-->
+    <script>
+        async function loadLatestDocuments() {
+
+            try {
+
+                const response = await fetch('p1_smst3_arabic-more.html');
+
+                const html = await response.text();
+
+                const parser = new DOMParser();
+
+                const doc = parser.parseFromString(html, 'text/html');
+
+                const cards = doc.querySelectorAll('.doc-card');
+
+                const container =
+                    document.getElementById('latest-documents');
+
+                container.innerHTML = '';
+
+                [...cards]
+                    .slice(0, 6)
+                    .forEach(card => {
+
+                        container.appendChild(
+                            card.cloneNode(true)
+                        );
+
+                    });
+
+            } catch (error) {
+
+                console.error(error);
+
+            }
+        }
+
+        loadLatestDocuments();
+    </script>
 </body>
 
 </html>
