@@ -1488,9 +1488,11 @@
     <div class="breadcrumb">
         <a href="../../../index.html"><i class="fas fa-home"></i> الرئيسية</a>
         <i class="fas fa-chevron-left"></i>
-        <a href="../../levels.html">الطور الابتدائي</a>
+        <a href="../../../index.html#levels">الطور الابتدائي</a>
         <i class="fas fa-chevron-left"></i>
         <a href="../primry01.html">السنة الأولى</a>
+        <i class="fas fa-chevron-left"></i>
+        <a href="p1_smst1_arabic-more.html">الفصل الأول</a>
         <i class="fas fa-chevron-left"></i>
         <span class="breadcrumb-current">اللغة العربية</span>
     </div>
@@ -1504,10 +1506,10 @@
                 <span>اللغة العربية</span>
             </div>
             <h1 class="hero-subject-title">
-                نماذج <span class="highlight">اللغة العربية</span><br> السنة الأولى ابتدائي
+                نماذج <span class="highlight">اللغة العربية</span><br> الفصل الأول ابتدائي
             </h1>
             <p class="hero-subject-desc">
-                مجموعة شاملة من نماذج الفروض والاختبارات والتمارين المصححة في اللغة العربية للسنة الأولى ابتدائي. تشمل
+                مجموعة شاملة من نماذج الفروض والاختبارات والتمارين المصححة في اللغة العربية للفصل الأول ابتدائي. تشمل
                 القراءة، الإملاء، القواعد، والتعبير.
             </p>
             <div class="subject-stats-bar">
@@ -1538,29 +1540,11 @@
     <!-- Documents Section -->
     <section class="documents-section" id="documents">
         <div class="section-header reveal">
-            <h2>النماذج والوثائق</h2>
+            <h2>النماذج و وثائق الفصل الاول</h2>
             <div class="section-line"></div>
             <p>جميع النماذج متاحة للتحميل بصيغة PDF مع التصحيح</p>
         </div>
 
-        <!-- Semester Tabs -->
-        <div class="semester-tabs reveal">
-            <button class="semester-tab active" data-semester="1" onclick="switchSemester(1)">
-                <span class="tab-icon">📚</span>
-                الفصل الأول
-                <span class="tab-count">5 نماذج</span>
-            </button>
-            <button class="semester-tab" data-semester="2" onclick="switchSemester(2)">
-                <span class="tab-icon">📝</span>
-                الفصل الثاني
-                <span class="tab-count">6 نماذج</span>
-            </button>
-            <button class="semester-tab" data-semester="3" onclick="switchSemester(3)">
-                <span class="tab-icon">🎯</span>
-                الفصل الثالث
-                <span class="tab-count">4 نماذج</span>
-            </button>
-        </div>
 
         <!-- Document Filters -->
         <div class="doc-filters reveal">
@@ -1572,218 +1556,133 @@
         </div>
 
         <!-- Semester 1 Documents -->
-        <div class="semester-content" id="semester-1">
-            <div class="documents-grid" id="latest-documents">
-                <div class="documents-grid">
-                    <div class="loading-docs">
-                        جاري تحميل المواضيع...
-                    </div>
 
-                    <div class="more-container">
-                        <a href="p1_smst1_arabic-more.html" class="btn-more">
-                            استكشف المزيد
-                        </a>
+        <div id="all-documents">
+            <div class="documents-grid" id="all-documents">
+                <div class="semester-content active" id="semester-1">
+                    <div class="documents-grid">
+
+                        <div class="doc-card reveal" data-type="homework">
+                            <div class="doc-icon-wrap homework"><i class="fas fa-file-alt"></i></div>
+                            <div class="doc-info">
+                                <div class="doc-title">فرض تأليفي 1 - القراءة والإملاء</div>
+                                <div class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> أكتوبر 2026</span>
+                                    <span><i class="fas fa-clock"></i> 12:30h</span>
+                                    <span class="doc-type-badge homework">فرض</span>
+                                    <span> <i class="fas fa-file-pdf"></i> 6 صفحات </span>
+                                    <span class="solution-badge with-solution"> <i class="fas fa-check-circle"></i> مع
+                                        التصحيح
+                                    </span>
+
+                                </div>
+                            </div>
+
+                            <div class="doc-actions">
+                                <span class="doc-size">
+                                    <i class="fas fa-weight-hanging"></i>
+                                    1.2 MB
+                                </span>
+                                <div class="doc-buttons">
+                                    <button class="doc-preview-btn"
+                                        onclick="previewPDF('https://drive.google.com/file/d/1Zb3vStj5pdx_TWb18ea0NNC8vAe/preview')">
+                                        <i class="fas fa-eye"></i>
+                                        معاينة
+                                    </button>
+                                    <a href="https://drive.google.com/file/d/1Zb3vupdx_TWb18ea0NNC8vAe/view?usp=sharing"
+                                        class="doc-download-btn" onclick="downloadDoc(this)">
+                                        <i class="fas fa-download"></i>
+                                        تحميل PDF
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="doc-card reveal" data-type="exam">
+                            <div class="doc-icon-wrap exam"><i class="fas fa-clipboard-check"></i></div>
+                            <div class="doc-info">
+                                <div class="doc-title">اختبار الفصل الأول - اللغة العربية</div>
+                                <div class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> نوفمبر 2026</span>
+                                    <span><i class="fas fa-clock"></i> 60 دقيقة</span>
+                                    <span class="doc-type-badge exam">اختبار</span>
+                                    <span class="solution-badge no-solution">
+                                        <i class="fas fa-times-circle"></i>
+                                        بدون تصحيح
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="doc-actions">
+                                <span class="doc-size"><i class="fas fa-weight-hanging"></i> 2.1 MB</span>
+                                <a href="#" class="doc-download-btn" onclick="downloadDoc(this)">
+                                    <i class="fas fa-download"></i> تحميل PDF
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="doc-card reveal" data-type="exercise">
+                            <div class="doc-icon-wrap exercise"><i class="fas fa-pen"></i></div>
+                            <div class="doc-info">
+                                <div class="doc-title">سلسلة تمارين - القواعد النحوية</div>
+                                <div class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> سبتمبر 2026</span>
+                                    <span><i class="fas fa-clock"></i> 30 دقيقة</span>
+                                    <span class="doc-type-badge exercise">تمرين</span>
+                                    <span> <i class="fas fa-file-pdf"></i> 3 صفحات </span>
+                                    <span class="solution-badge no-solution">
+                                        <i class="fas fa-times-circle"></i>
+                                        بدون تصحيح
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="doc-actions">
+                                <span class="doc-size"><i class="fas fa-weight-hanging"></i> 0.8 MB</span>
+                                <a href="#" class="doc-download-btn" onclick="downloadDoc(this)">
+                                    <i class="fas fa-download"></i> تحميل PDF
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="doc-card reveal" data-type="revision">
+                            <div class="doc-icon-wrap revision"><i class="fas fa-redo"></i></div>
+                            <div class="doc-info">
+                                <div class="doc-title">مراجعة شاملة - الفصل الأول</div>
+                                <div class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> ديسمبر 2026</span>
+                                    <span><i class="fas fa-clock"></i> 90 دقيقة</span>
+                                    <span class="doc-type-badge revision">مراجعة</span>
+                                </div>
+                            </div>
+                            <div class="doc-actions">
+                                <span class="doc-size"><i class="fas fa-weight-hanging"></i> 3.5 MB</span>
+                                <a href="#" class="doc-download-btn" onclick="downloadDoc(this)">
+                                    <i class="fas fa-download"></i> تحميل PDF
+                                </a>
+                            </div>
+                        </div>
+                        <div class="doc-card reveal" data-type="homework">
+                            <div class="doc-icon-wrap homework"><i class="fas fa-file-alt"></i></div>
+                            <div class="doc-info">
+                                <div class="doc-title">فرض تأليفي 2 - التعبير الكتابي</div>
+                                <div class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> نوفمبر 2026</span>
+                                    <span><i class="fas fa-clock"></i> 40 دقيقة</span>
+                                    <span class="doc-type-badge homework">فرض</span>
+                                </div>
+                            </div>
+                            <div class="doc-actions">
+                                <span class="doc-size"><i class="fas fa-weight-hanging"></i> 1.5 MB</span>
+                                <a href="#" class="doc-download-btn" onclick="downloadDoc(this)">
+                                    <i class="fas fa-download"></i> تحميل PDF
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-            <!-- Semester 2 Documents -->
-            <div class="semester-content" id="semester-2">
-                <div class="documents-grid">
-                    <div class="doc-card reveal" data-type="homework">
-                        <div class="doc-icon-wrap homework"><i class="fas fa-file-alt"></i></div>
-                        <div class="doc-info">
-                            <div class="doc-title">فرض تأليفي 1 - القراءة والفهم</div>
-                            <div class="doc-meta">
-                                <span><i class="fas fa-calendar"></i> يناير 2027</span>
-                                <span><i class="fas fa-clock"></i> 45 دقيقة</span>
-                                <span class="doc-type-badge homework">فرض</span>
-                            </div>
-                        </div>
-                        <div class="doc-actions">
-                            <span class="doc-size"><i class="fas fa-weight-hanging"></i> 1.3 MB</span>
-                            <a href="#" class="doc-download-btn" onclick="downloadDoc(this)">
-                                <i class="fas fa-download"></i> تحميل PDF
-                            </a>
-                        </div>
-                    </div>
-                    <div class="doc-card reveal" data-type="exam">
-                        <div class="doc-icon-wrap exam"><i class="fas fa-clipboard-check"></i></div>
-                        <div class="doc-info">
-                            <div class="doc-title">اختبار الفصل الثاني - اللغة العربية</div>
-                            <div class="doc-meta">
-                                <span><i class="fas fa-calendar"></i> فبراير 2027</span>
-                                <span><i class="fas fa-clock"></i> 60 دقيقة</span>
-                                <span class="doc-type-badge exam">اختبار</span>
-                            </div>
-                        </div>
-                        <div class="doc-actions">
-                            <span class="doc-size"><i class="fas fa-weight-hanging"></i> 2.3 MB</span>
-                            <a href="#" class="doc-download-btn" onclick="downloadDoc(this)">
-                                <i class="fas fa-download"></i> تحميل PDF
-                            </a>
-                        </div>
-                    </div>
-                    <div class="doc-card reveal" data-type="exercise">
-                        <div class="doc-icon-wrap exercise"><i class="fas fa-pen"></i></div>
-                        <div class="doc-info">
-                            <div class="doc-title">سلسلة تمارين - الإملاء والتجويد</div>
-                            <div class="doc-meta">
-                                <span><i class="fas fa-calendar"></i> يناير 2027</span>
-                                <span><i class="fas fa-clock"></i> 35 دقيقة</span>
-                                <span class="doc-type-badge exercise">تمرين</span>
-                            </div>
-                        </div>
-                        <div class="doc-actions">
-                            <span class="doc-size"><i class="fas fa-weight-hanging"></i> 0.9 MB</span>
-                            <a href="#" class="doc-download-btn" onclick="downloadDoc(this)">
-                                <i class="fas fa-download"></i> تحميل PDF
-                            </a>
-                        </div>
-                    </div>
-                    <div class="doc-card reveal" data-type="revision">
-                        <div class="doc-icon-wrap revision"><i class="fas fa-redo"></i></div>
-                        <div class="doc-info">
-                            <div class="doc-title">مراجعة شاملة - الفصل الثاني</div>
-                            <div class="doc-meta">
-                                <span><i class="fas fa-calendar"></i> مارس 2027</span>
-                                <span><i class="fas fa-clock"></i> 90 دقيقة</span>
-                                <span class="doc-type-badge revision">مراجعة</span>
-                            </div>
-                        </div>
-                        <div class="doc-actions">
-                            <span class="doc-size"><i class="fas fa-weight-hanging"></i> 3.8 MB</span>
-                            <a href="#" class="doc-download-btn" onclick="downloadDoc(this)">
-                                <i class="fas fa-download"></i> تحميل PDF
-                            </a>
-                        </div>
-                    </div>
-                    <div class="doc-card reveal" data-type="homework">
-                        <div class="doc-icon-wrap homework"><i class="fas fa-file-alt"></i></div>
-                        <div class="doc-info">
-                            <div class="doc-title">فرض تأليفي 2 - النصوص الأدبية</div>
-                            <div class="doc-meta">
-                                <span><i class="fas fa-calendar"></i> فبراير 2027</span>
-                                <span><i class="fas fa-clock"></i> 50 دقيقة</span>
-                                <span class="doc-type-badge homework">فرض</span>
-                            </div>
-                        </div>
-                        <div class="doc-actions">
-                            <span class="doc-size"><i class="fas fa-weight-hanging"></i> 1.6 MB</span>
-                            <a href="#" class="doc-download-btn" onclick="downloadDoc(this)">
-                                <i class="fas fa-download"></i> تحميل PDF
-                            </a>
-                        </div>
-                    </div>
-                    <div class="doc-card reveal" data-type="exercise">
-                        <div class="doc-icon-wrap exercise"><i class="fas fa-pen"></i></div>
-                        <div class="doc-info">
-                            <div class="doc-title">تمارين إضافية - التعبير الشفوي</div>
-                            <div class="doc-meta">
-                                <span><i class="fas fa-calendar"></i> مارس 2027</span>
-                                <span><i class="fas fa-clock"></i> 25 دقيقة</span>
-                                <span class="doc-type-badge exercise">تمرين</span>
-                            </div>
-                        </div>
-                        <div class="doc-actions">
-                            <span class="doc-size"><i class="fas fa-weight-hanging"></i> 0.7 MB</span>
-                            <a href="#" class="doc-download-btn" onclick="downloadDoc(this)">
-                                <i class="fas fa-download"></i> تحميل PDF
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="more-container">
-                    <a href="p1_smst2_arabic-more.html" class="btn-more">
-                        <span>استكشف المزيد</span>
-                        <i class="fas fa-arrow-down"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Semester 3 Documents -->
-            <div class="semester-content" id="semester-3">
-                <div class="documents-grid">
-                    <div class="doc-card reveal" data-type="exam">
-                        <div class="doc-icon-wrap exam"><i class="fas fa-clipboard-check"></i></div>
-                        <div class="doc-info">
-                            <div class="doc-title">اختبار الفصل الثالث - اللغة العربية</div>
-                            <div class="doc-meta">
-                                <span><i class="fas fa-calendar"></i> أبريل 2027</span>
-                                <span><i class="fas fa-clock"></i> 60 دقيقة</span>
-                                <span class="doc-type-badge exam">اختبار</span>
-                            </div>
-                        </div>
-                        <div class="doc-actions">
-                            <span class="doc-size"><i class="fas fa-weight-hanging"></i> 2.5 MB</span>
-                            <a href="#" class="doc-download-btn" onclick="downloadDoc(this)">
-                                <i class="fas fa-download"></i> تحميل PDF
-                            </a>
-                        </div>
-                    </div>
-                    <div class="doc-card reveal" data-type="revision">
-                        <div class="doc-icon-wrap revision"><i class="fas fa-redo"></i></div>
-                        <div class="doc-info">
-                            <div class="doc-title">مراجعة نهائية - السنة كاملة</div>
-                            <div class="doc-meta">
-                                <span><i class="fas fa-calendar"></i> مايو 2027</span>
-                                <span><i class="fas fa-clock"></i> 120 دقيقة</span>
-                                <span class="doc-type-badge revision">مراجعة</span>
-                            </div>
-                        </div>
-                        <div class="doc-actions">
-                            <span class="doc-size"><i class="fas fa-weight-hanging"></i> 4.2 MB</span>
-                            <a href="#" class="doc-download-btn" onclick="downloadDoc(this)">
-                                <i class="fas fa-download"></i> تحميل PDF
-                            </a>
-                        </div>
-                    </div>
-                    <div class="doc-card reveal" data-type="homework">
-                        <div class="doc-icon-wrap homework"><i class="fas fa-file-alt"></i></div>
-                        <div class="doc-info">
-                            <div class="doc-title">فرض تأليفي - مراجعة شاملة</div>
-                            <div class="doc-meta">
-                                <span><i class="fas fa-calendar"></i> أبريل 2027</span>
-                                <span><i class="fas fa-clock"></i> 50 دقيقة</span>
-                                <span class="doc-type-badge homework">فرض</span>
-                            </div>
-                        </div>
-                        <div class="doc-actions">
-                            <span class="doc-size"><i class="fas fa-weight-hanging"></i> 1.8 MB</span>
-                            <a href="#" class="doc-download-btn" onclick="downloadDoc(this)">
-                                <i class="fas fa-download"></i> تحميل PDF
-                            </a>
-                        </div>
-                    </div>
-                    <div class="doc-card reveal" data-type="exercise">
-                        <div class="doc-icon-wrap exercise"><i class="fas fa-pen"></i></div>
-                        <div class="doc-info">
-                            <div class="doc-title">تمارين تطبيقية - الاستعداد للامتحان</div>
-                            <div class="doc-meta">
-                                <span><i class="fas fa-calendar"></i> مايو 2027</span>
-                                <span><i class="fas fa-clock"></i> 40 دقيقة</span>
-                                <span class="doc-type-badge exercise">تمرين</span>
-                            </div>
-                        </div>
-                        <div class="doc-actions">
-                            <span class="doc-size"><i class="fas fa-weight-hanging"></i> 1.1 MB</span>
-                            <a href="#" class="doc-download-btn" onclick="downloadDoc(this)">
-                                <i class="fas fa-download"></i> تحميل PDF
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="more-container">
-                    <a href="p1_smst3_arabic-more.html" class="btn-more">
-                        <span>استكشف المزيد</span>
-                        <i class="fas fa-arrow-down"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Ad Slot -->
@@ -1916,309 +1815,7 @@
         </div>
     </div>
 
-
-    <script>
-        // ========== LOADER ==========
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
-            }, 300);
-        });
-
-        // ========== LENIS SMOOTH SCROLL ==========
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: true
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-
-        // ========== GSAP SCROLL TRIGGER ==========
-        gsap.registerPlugin(ScrollTrigger);
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
-        gsap.ticker.lagSmoothing(0);
-
-        ScrollTrigger.create({
-            start: 'top -100',
-            end: 99999,
-            toggleClass: {
-                className: 'scrolled',
-                targets: '.header'
-            }
-        });
-
-        const reveals = document.querySelectorAll('.reveal');
-        reveals.forEach(el => {
-            gsap.fromTo(el, {
-                opacity: 0,
-                y: 50
-            }, {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: el,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none'
-                }
-            });
-        });
-
-        // ========== CUSTOM CURSOR ==========
-        const cursor = document.getElementById('cursor');
-        const cursorDot = document.getElementById('cursorDot');
-        let mouseX = 0,
-            mouseY = 0,
-            cursorX = 0,
-            cursorY = 0;
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursorDot.style.left = mouseX + 'px';
-            cursorDot.style.top = mouseY + 'px';
-        });
-
-        function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.1;
-            cursorY += (mouseY - cursorY) * 0.1;
-            cursor.style.left = cursorX + 'px';
-            cursor.style.top = cursorY + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-        document.querySelectorAll('a, button, .doc-card, .doc-download-btn, .doc-filter, .semester-tab').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-
-        // ========== STARFIELD CANVAS ==========
-        const starCanvas = document.getElementById('starfield');
-        const starCtx = starCanvas.getContext('2d');
-        let stars = [];
-        const starCount = 200;
-
-        function resizeStarCanvas() {
-            starCanvas.width = window.innerWidth;
-            starCanvas.height = window.innerHeight;
-        }
-        resizeStarCanvas();
-        window.addEventListener('resize', resizeStarCanvas);
-        class Star {
-            constructor() {
-                this.reset();
-            }
-            reset() {
-                this.x = Math.random() * starCanvas.width;
-                this.y = Math.random() * starCanvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.3;
-                this.speedY = (Math.random() - 0.5) * 0.3;
-                this.opacity = Math.random() * 0.8 + 0.2;
-                this.brightness = Math.random();
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                this.brightness += 0.01;
-                if (this.brightness > 1) this.brightness = 0;
-                if (this.x < 0 || this.x > starCanvas.width || this.y < 0 || this.y > starCanvas.height) this.reset();
-            }
-            draw() {
-                const alpha = this.opacity * (0.5 + this.brightness * 0.5);
-                starCtx.beginPath();
-                starCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                starCtx.fillStyle = `rgba(212, 175, 55, ${alpha})`;
-                starCtx.fill();
-            }
-        }
-        for (let i = 0; i < starCount; i++) stars.push(new Star());
-        let mouseStarX = 0,
-            mouseStarY = 0;
-        document.addEventListener('mousemove', (e) => {
-            mouseStarX = e.clientX;
-            mouseStarY = e.clientY;
-        });
-
-        function drawConnections() {
-            for (let i = 0; i < stars.length; i++) {
-                for (let j = i + 1; j < stars.length; j++) {
-                    const dx = stars[i].x - stars[j].x,
-                        dy = stars[i].y - stars[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 100) {
-                        const alpha = (1 - dist / 100) * 0.15;
-                        starCtx.beginPath();
-                        starCtx.moveTo(stars[i].x, stars[i].y);
-                        starCtx.lineTo(stars[j].x, stars[j].y);
-                        starCtx.strokeStyle = `rgba(212, 175, 55, ${alpha})`;
-                        starCtx.lineWidth = 0.5;
-                        starCtx.stroke();
-                    }
-                }
-                const dx = stars[i].x - mouseStarX,
-                    dy = stars[i].y - mouseStarY;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 150) {
-                    const alpha = (1 - dist / 150) * 0.3;
-                    starCtx.beginPath();
-                    starCtx.moveTo(stars[i].x, stars[i].y);
-                    starCtx.lineTo(mouseStarX, mouseStarY);
-                    starCtx.strokeStyle = `rgba(212, 175, 55, ${alpha})`;
-                    starCtx.lineWidth = 0.8;
-                    starCtx.stroke();
-                }
-            }
-        }
-
-        function animateStars() {
-            starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
-            stars.forEach(star => {
-                star.update();
-                star.draw();
-            });
-            drawConnections();
-            requestAnimationFrame(animateStars);
-        }
-        animateStars();
-
-        // ========== SEMESTER TABS ==========
-        function switchSemester(num) {
-            document.querySelectorAll('.semester-tab').forEach(tab => {
-                tab.classList.remove('active');
-                if (parseInt(tab.dataset.semester) === num) tab.classList.add('active');
-            });
-            document.querySelectorAll('.semester-content').forEach(content => content.classList.remove('active'));
-            document.getElementById('semester-' + num).classList.add('active');
-            const newContent = document.getElementById('semester-' + num);
-            newContent.querySelectorAll('.reveal').forEach(el => {
-                gsap.fromTo(el, {
-                    opacity: 0,
-                    y: 30
-                }, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.6,
-                    ease: 'power3.out',
-                    stagger: 0.1
-                });
-            });
-        }
-
-        // ========== DOCUMENT FILTERS ==========
-        function filterDocs(type) {
-            document.querySelectorAll('.doc-filter').forEach(f => f.classList.remove('active'));
-            event.target.classList.add('active');
-            document.querySelectorAll('.semester-content.active .doc-card').forEach(card => {
-                if (type === 'all' || card.dataset.type === type) {
-                    card.style.display = 'flex';
-                    gsap.fromTo(card, {
-                        opacity: 0,
-                        y: 20
-                    }, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.4,
-                        ease: 'power3.out'
-                    });
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // ========== DOWNLOAD SIMULATION ==========
-        function downloadDoc(btn) {
-            const originalContent = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحميل...';
-            btn.style.background = 'var(--gold)';
-            btn.style.color = 'var(--void)';
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> تم التحميل!';
-                setTimeout(() => {
-                    btn.innerHTML = originalContent;
-                    btn.style.background = '';
-                    btn.style.color = '';
-                }, 2000);
-            }, 1500);
-        }
-
-        // ========== SEARCH ==========
-        document.querySelector('.search-box').addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            document.querySelectorAll('.doc-card').forEach(card => {
-                const text = card.textContent.toLowerCase();
-                card.style.display = text.includes(query) || query === '' ? 'flex' : 'none';
-            });
-        });
-
-
-        // ========== المعاينة والطباعة ==========
-        function previewPDF(url) {
-
-            document.getElementById("pdfViewer").src = url;
-
-            document.getElementById("pdfModal")
-                .classList.add("active");
-        }
-
-        function closePDFPreview() {
-
-            document.getElementById("pdfModal")
-                .classList.remove("active");
-
-            document.getElementById("pdfViewer").src = "";
-        }
-
-
-    </script>
-    <script>
-        async function loadLatestDocuments() {
-
-            try {
-
-                const response = await fetch('p1_smst1_arabic-more.html');
-
-                const html = await response.text();
-
-                const parser = new DOMParser();
-
-                const doc = parser.parseFromString(html, 'text/html');
-
-                const cards = doc.querySelectorAll('.doc-card');
-
-                const container =
-                    document.getElementById('latest-documents');
-
-                container.innerHTML = '';
-
-                [...cards]
-                    .slice(0, 6)
-                    .forEach(card => {
-
-                        container.appendChild(
-                            card.cloneNode(true)
-                        );
-
-                    });
-
-            } catch (error) {
-
-                console.error(error);
-
-            }
-        }
-
-        loadLatestDocuments();
-    </script>
+    <script defer src="../../../assets/js/modul.js"></script>
 
 </body>
 
