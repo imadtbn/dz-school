@@ -1,9 +1,3 @@
-// ========== LOADER ==========
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        document.getElementById('loader').classList.add('hidden');
-    }, 300);
-});
 
 // ========== LENIS SMOOTH SCROLL ==========
 const lenis = new Lenis({
