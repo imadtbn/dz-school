@@ -137,10 +137,12 @@ body {
 }
 
 @keyframes logoPulse {
+
     0%,
     100% {
         box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
     }
+
     50% {
         box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
     }
@@ -467,6 +469,7 @@ body {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -599,6 +602,7 @@ body {
 
 .doc-info {
     flex: 1;
+    min-width: 0;
 }
 
 .doc-title {
@@ -606,7 +610,11 @@ body {
     font-weight: 700;
     color: var(--parchment);
     margin-bottom: 0.3rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+
 }
+
 
 .doc-meta {
     display: flex;
@@ -954,10 +962,12 @@ body {
 }
 
 @keyframes heartbeat {
+
     0%,
     100% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.2);
     }
@@ -1012,57 +1022,72 @@ body {
 /* Responsive */
 
 @media (max-width: 768px) {
+
     .cursor,
     .cursor-dot {
         display: none;
     }
+
     body {
         cursor: auto;
     }
+
     .header {
         padding: 1rem;
     }
+
     .header-inner {
         flex-wrap: wrap;
     }
+
     .search-container {
         order: 3;
         width: 100%;
         max-width: none;
         margin-top: 1rem;
     }
+
     .nav-links {
         display: none;
     }
+
     .mobile-toggle {
         display: block;
     }
+
     .breadcrumb {
         padding: 5rem 1rem 1rem;
         flex-wrap: wrap;
     }
+
     .subject-stats-bar {
         flex-direction: column;
         gap: 1rem;
     }
+
     .semester-tabs {
         flex-direction: column;
     }
+
     .doc-card {
         flex-direction: column;
         text-align: center;
         gap: 1rem;
     }
+
     .doc-actions {
         width: 100%;
         justify-content: center;
     }
+
     .related-grid {
         grid-template-columns: 1fr;
     }
+
     .footer-grid {
         gap: 2rem;
     }
+
     .footer-bottom {
         flex-direction: column;
         text-align: center;
@@ -1113,36 +1138,36 @@ body {
 
 .doc-preview-btn {
 
-    background: rgba(59,130,246,.15);
+    background: rgba(59, 130, 246, .15);
 
     color: #60a5fa;
 
-    border: 1px solid rgba(59,130,246,.25);
+    border: 1px solid rgba(59, 130, 246, .25);
 }
 
 .doc-preview-btn:hover {
 
     transform: translateY(-2px);
 
-    background: rgba(59,130,246,.25);
+    background: rgba(59, 130, 246, .25);
 }
 
 /* طباعة */
 
 .doc-print-btn {
 
-    background: rgba(212,175,55,.15);
+    background: rgba(212, 175, 55, .15);
 
     color: var(--gold);
 
-    border: 1px solid rgba(212,175,55,.25);
+    border: 1px solid rgba(212, 175, 55, .25);
 }
 
 .doc-print-btn:hover {
 
     transform: translateY(-2px);
 
-    background: rgba(212,175,55,.25);
+    background: rgba(212, 175, 55, .25);
 }
 
 /* نافذة PDF */
@@ -1153,7 +1178,7 @@ body {
 
     inset: 0;
 
-    background: rgba(0,0,0,.85);
+    background: rgba(0, 0, 0, .85);
 
     backdrop-filter: blur(10px);
 
@@ -1186,7 +1211,7 @@ body {
 
     overflow: hidden;
 
-    border: 1px solid rgba(212,175,55,.2);
+    border: 1px solid rgba(212, 175, 55, .2);
 
     position: relative;
 }
@@ -1216,9 +1241,209 @@ body {
 
     cursor: pointer;
 
-    background: rgba(212,175,55,.15);
+    background: rgba(212, 175, 55, .15);
 
     color: var(--gold);
 
     z-index: 10;
+}
+
+/* تحسين بطاقة ملعومات الملف */
+.doc-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: .7rem;
+}
+
+.doc-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+}
+
+@media (max-width: 768px) {
+
+    .doc-meta {
+        gap: .4rem;
+    }
+
+    .doc-meta span {
+        font-size: .75rem;
+    }
+
+    .solution-badge,
+    .doc-type-badge {
+        font-size: .72rem;
+        padding: .3rem .65rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .doc-meta {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: .5rem;
+    }
+
+    .doc-meta span {
+
+        width: 100%;
+
+        justify-content: center;
+
+        text-align: center;
+
+        padding: .45rem;
+
+        border-radius: 10px;
+
+        background: rgba(255, 255, 255, .04);
+    }
+}
+
+.doc-card {
+    display: flex;
+}
+
+/* ===== More Button Container ===== */
+
+.more-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    width: 100%;
+}
+
+/* ===== More Button ===== */
+
+.btn-more {
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
+
+    min-width: 220px;
+    max-width: 100%;
+
+    padding: 1rem 2rem;
+
+    border-radius: 999px;
+
+    text-decoration: none;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    color: var(--void);
+
+    background: linear-gradient(135deg,
+            var(--gold),
+            var(--accent));
+
+    box-shadow:
+        0 10px 30px rgba(212, 175, 55, .25),
+        0 0 20px rgba(212, 175, 55, .15);
+
+    transition: all .35s ease;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* لمعان متحرك */
+
+.btn-more::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, .35),
+            transparent);
+
+    transition: .8s;
+}
+
+.btn-more:hover::before {
+    left: 130%;
+}
+
+/* Hover */
+
+.btn-more:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 40px rgba(212, 175, 55, .4),
+        0 0 30px rgba(212, 175, 55, .25);
+}
+
+.btn-more i {
+
+    transition: transform .3s ease;
+}
+
+.btn-more:hover i {
+
+    transform: translateY(4px);
+}
+
+/* Active */
+
+.btn-more:active {
+
+    transform: scale(.97);
+}
+
+/* ===== Mobile ===== */
+
+@media (max-width:768px) {
+
+    .more-container {
+        margin-top: 2rem;
+    }
+
+    .btn-more {
+
+        width: 100%;
+        max-width: 320px;
+
+        padding: .95rem 1.5rem;
+
+        font-size: .95rem;
+    }
+}
+
+@media (max-width:480px) {
+
+    .btn-more {
+
+        max-width: 100%;
+
+        font-size: .9rem;
+
+        padding: .9rem 1.2rem;
+    }
+}
+
+.btn-more {
+    border: 1px solid rgba(255, 255, 255, .15);
+    backdrop-filter: blur(12px);
 }
