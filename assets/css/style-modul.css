@@ -1447,3 +1447,97 @@ body {
     border: 1px solid rgba(255, 255, 255, .15);
     backdrop-filter: blur(12px);
 }
+
+
+
+
+
+/* ===== Document Buttons ===== */
+
+.doc-buttons {
+    display: flex;
+    gap: .6rem;
+    width: 100%;
+    margin-top: .8rem;
+}
+
+.doc-download-btn,
+.doc-preview-btn {
+
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+
+    min-height: 44px;
+
+    padding: .85rem 1rem;
+
+    border-radius: 12px;
+
+    font-size: .9rem;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: all .3s ease;
+
+    box-sizing: border-box;
+}
+
+.doc-download-btn {
+
+    background: linear-gradient(
+        135deg,
+        var(--gold),
+        var(--accent)
+    );
+
+    color: var(--void);
+
+    border: none;
+}
+
+.doc-preview-btn {
+
+    background: rgba(255,255,255,.06);
+
+    color: var(--gold);
+
+    border: 1px solid rgba(212,175,55,.25);
+}
+
+.doc-download-btn:hover,
+.doc-preview-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(212,175,55,.18);
+}
+
+@media (max-width:480px) {
+
+    .doc-buttons {
+
+        flex-direction: column;
+
+        gap: .5rem;
+    }
+
+    .doc-download-btn,
+    .doc-preview-btn {
+
+        width: 100%;
+
+        min-height: 42px;
+
+        font-size: .85rem;
+
+        padding: .8rem;
+    }
+}
