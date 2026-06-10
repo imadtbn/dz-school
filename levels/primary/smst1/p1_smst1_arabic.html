@@ -56,7 +56,6 @@
 
     <meta name="google-site-verification" content="f5Xi4oFx0v5dN6iPZd9qCw-7vnc3vIbAeYF9jr4vwVM" />
 
-
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
         rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -67,11 +66,17 @@
 
     <link rel="stylesheet" href="../../../assets/css/style-modul.css">
     <link rel="stylesheet" href="../../../assets/css/style-main2.css">
+    <link rel="stylesheet" href="../../../assets/css/style-main.css">
 
 </head>
 
 <body>
 
+        <!--زر الرجوع للأعلى-->
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="العودة للأعلى">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
     <!-- Custom Cursor -->
     <div class="cursor" id="cursor"></div>
     <div class="cursor-dot" id="cursorDot"></div>
@@ -96,7 +101,7 @@
             <nav class="nav-links">
                 <a href="../../../index.html">الرئيسية</a>
                 <a href="../../../index.html#levels">الأطوار</a>
-                <a href="../../../index.html#subjects">المواد</a>
+                <a href="../../../pages/subjects.html#subjects">المواد</a>
                 <a href="../../../pages/contact.html">تواصل</a>
             </nav>
             <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
@@ -157,7 +162,7 @@
     <!-- Documents Section -->
     <section class="documents-section" id="documents">
         <div class="section-header reveal">
-            <h2>النماذج والوثائق</h2>
+            <h2>إختر الفصل الدراسي</h2>
             <div class="section-line"></div>
             <p>جميع النماذج متاحة للتحميل بصيغة PDF مع التصحيح</p>
         </div>
@@ -167,17 +172,17 @@
             <button class="semester-tab active" data-semester="1" onclick="switchSemester(1)">
                 <span class="tab-icon">📚</span>
                 الفصل الأول
-                <span class="tab-count">5 نماذج</span>
+                <span class="tab-count">06 نماذج</span>
             </button>
             <button class="semester-tab" data-semester="2" onclick="switchSemester(2)">
                 <span class="tab-icon">📝</span>
                 الفصل الثاني
-                <span class="tab-count">6 نماذج</span>
+                <span class="tab-count">06 نماذج</span>
             </button>
             <button class="semester-tab" data-semester="3" onclick="switchSemester(3)">
                 <span class="tab-icon">🎯</span>
                 الفصل الثالث
-                <span class="tab-count">4 نماذج</span>
+                <span class="tab-count">06 نماذج</span>
             </button>
         </div>
 
@@ -202,7 +207,7 @@
 
             <div class="more-container">
                 <a href="p1_smst1_arabic-more.html" class="btn-more">
-                    استكشف المزيد
+                    استكشف المزيد من المواضيع
                 </a>
             </div>
         </div>
@@ -219,7 +224,7 @@
 
             <div class="more-container">
                 <a href="p1_smst2_arabic-more.html" class="btn-more">
-                    استكشف المزيد
+                    استكشف المزيد من المواضيع
                 </a>
             </div>
         </div>
@@ -234,7 +239,7 @@
                 </div>
                 <div class="more-container">
                     <a href="p1_smst3_arabic-more.html" class="btn-more">
-                        استكشف المزيد
+                        استكشف المزيد من المواضيع
                     </a>
                 </div>
             </div>

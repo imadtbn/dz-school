@@ -67,10 +67,17 @@
 
     <link rel="stylesheet" href="../../../assets/css/style-modul.css">
     <link rel="stylesheet" href="../../../assets/css/style-main2.css">
+    <link rel="stylesheet" href="../../../assets/css/style-main.css">
+
 
 </head>
 
 <body>
+
+    <!--زر الرجوع للأعلى-->
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="العودة للأعلى">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
     <!-- Custom Cursor -->
     <div class="cursor" id="cursor"></div>
@@ -96,7 +103,7 @@
             <nav class="nav-links">
                 <a href="../../../index.html">الرئيسية</a>
                 <a href="../../../index.html#levels">الأطوار</a>
-                <a href="../../../index.html#subjects">المواد</a>
+                <a href="../../../pages/subjects.html#subjects">المواد</a>
                 <a href="../../../pages/contact.html">تواصل</a>
             </nav>
             <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
@@ -175,7 +182,6 @@
         </div>
 
         <!-- Semester 1 Documents -->
-
         <div id="all-documents">
             <div class="documents-grid" id="all-documents">
                 <div class="semester-content active" id="semester-1">
@@ -300,123 +306,9 @@
                             </div>
                         </div>
 
-                                                <div class="doc-card reveal" data-type="homework">
+                        <div class="doc-card reveal" data-type="homework">
                             <div class="doc-icon-wrap homework"><i class="fas fa-file-alt"></i></div>
-                            
-                            <div class="doc-info">
-                                <div class="doc-title">فرض تأليفي 1 - القراءة والإملاء</div>
-                                <div class="doc-meta">
-                                    <span><i class="fas fa-calendar"></i> أكتوبر 2026</span>
-                                    <span><i class="fas fa-clock"></i> 12:30h</span>
-                                    <span class="doc-type-badge homework">فرض</span>
-                                    <span> <i class="fas fa-file-pdf"></i> 6 صفحات </span>
-                                    <span class="solution-badge with-solution"> <i class="fas fa-check-circle"></i> مع
-                                        التصحيح
-                                    </span>
 
-                                </div>
-                            </div>
-
-                            <div class="doc-actions">
-                                <span class="doc-size">
-                                    <i class="fas fa-weight-hanging"></i>
-                                    1.2 MB
-                                </span>
-                                <div class="doc-buttons">
-                                    <button class="doc-preview-btn"
-                                        onclick="previewPDF('https://drive.google.com/file/d/1Zb3vStj5pdx_TWb18ea0NNC8vAe/preview')">
-                                        <i class="fas fa-eye"></i>
-                                        معاينة
-                                    </button>
-                                    <a href="https://drive.google.com/file/d/1Zb3vupdx_TWb18ea0NNC8vAe/view?usp=sharing"
-                                        class="doc-download-btn" onclick="downloadDoc(this)">
-                                        <i class="fas fa-download"></i>
-                                        تحميل PDF
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-
-                                                <div class="doc-card reveal" data-type="homework">
-                            <div class="doc-icon-wrap homework"><i class="fas fa-file-alt"></i></div>
-                            
-                            <div class="doc-info">
-                                <div class="doc-title">فرض تأليفي 1 - القراءة والإملاء</div>
-                                <div class="doc-meta">
-                                    <span><i class="fas fa-calendar"></i> أكتوبر 2026</span>
-                                    <span><i class="fas fa-clock"></i> 12:30h</span>
-                                    <span class="doc-type-badge homework">فرض</span>
-                                    <span> <i class="fas fa-file-pdf"></i> 6 صفحات </span>
-                                    <span class="solution-badge with-solution"> <i class="fas fa-check-circle"></i> مع
-                                        التصحيح
-                                    </span>
-
-                                </div>
-                            </div>
-
-                            <div class="doc-actions">
-                                <span class="doc-size">
-                                    <i class="fas fa-weight-hanging"></i>
-                                    1.2 MB
-                                </span>
-                                <div class="doc-buttons">
-                                    <button class="doc-preview-btn"
-                                        onclick="previewPDF('https://drive.google.com/file/d/1Zb3vStj5pdx_TWb18ea0NNC8vAe/preview')">
-                                        <i class="fas fa-eye"></i>
-                                        معاينة
-                                    </button>
-                                    <a href="https://drive.google.com/file/d/1Zb3vupdx_TWb18ea0NNC8vAe/view?usp=sharing"
-                                        class="doc-download-btn" onclick="downloadDoc(this)">
-                                        <i class="fas fa-download"></i>
-                                        تحميل PDF
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-
-                                                <div class="doc-card reveal" data-type="homework">
-                            <div class="doc-icon-wrap homework"><i class="fas fa-file-alt"></i></div>
-                            
-                            <div class="doc-info">
-                                <div class="doc-title">فرض تأليفي 1 - القراءة والإملاء</div>
-                                <div class="doc-meta">
-                                    <span><i class="fas fa-calendar"></i> أكتوبر 2026</span>
-                                    <span><i class="fas fa-clock"></i> 12:30h</span>
-                                    <span class="doc-type-badge homework">فرض</span>
-                                    <span> <i class="fas fa-file-pdf"></i> 6 صفحات </span>
-                                    <span class="solution-badge with-solution"> <i class="fas fa-check-circle"></i> مع
-                                        التصحيح
-                                    </span>
-
-                                </div>
-                            </div>
-
-                            <div class="doc-actions">
-                                <span class="doc-size">
-                                    <i class="fas fa-weight-hanging"></i>
-                                    1.2 MB
-                                </span>
-                                <div class="doc-buttons">
-                                    <button class="doc-preview-btn"
-                                        onclick="previewPDF('https://drive.google.com/file/d/1Zb3vStj5pdx_TWb18ea0NNC8vAe/preview')">
-                                        <i class="fas fa-eye"></i>
-                                        معاينة
-                                    </button>
-                                    <a href="https://drive.google.com/file/d/1Zb3vupdx_TWb18ea0NNC8vAe/view?usp=sharing"
-                                        class="doc-download-btn" onclick="downloadDoc(this)">
-                                        <i class="fas fa-download"></i>
-                                        تحميل PDF
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-
-                                                <div class="doc-card reveal" data-type="homework">
-                            <div class="doc-icon-wrap homework"><i class="fas fa-file-alt"></i></div>
-                            
                             <div class="doc-info">
                                 <div class="doc-title">فرض تأليفي 1 - القراءة والإملاء</div>
                                 <div class="doc-meta">
@@ -454,7 +346,121 @@
 
                         <div class="doc-card reveal" data-type="homework">
                             <div class="doc-icon-wrap homework"><i class="fas fa-file-alt"></i></div>
-                            
+
+                            <div class="doc-info">
+                                <div class="doc-title">فرض تأليفي 1 - القراءة والإملاء</div>
+                                <div class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> أكتوبر 2026</span>
+                                    <span><i class="fas fa-clock"></i> 12:30h</span>
+                                    <span class="doc-type-badge homework">فرض</span>
+                                    <span> <i class="fas fa-file-pdf"></i> 6 صفحات </span>
+                                    <span class="solution-badge with-solution"> <i class="fas fa-check-circle"></i> مع
+                                        التصحيح
+                                    </span>
+
+                                </div>
+                            </div>
+
+                            <div class="doc-actions">
+                                <span class="doc-size">
+                                    <i class="fas fa-weight-hanging"></i>
+                                    1.2 MB
+                                </span>
+                                <div class="doc-buttons">
+                                    <button class="doc-preview-btn"
+                                        onclick="previewPDF('https://drive.google.com/file/d/1Zb3vStj5pdx_TWb18ea0NNC8vAe/preview')">
+                                        <i class="fas fa-eye"></i>
+                                        معاينة
+                                    </button>
+                                    <a href="https://drive.google.com/file/d/1Zb3vupdx_TWb18ea0NNC8vAe/view?usp=sharing"
+                                        class="doc-download-btn" onclick="downloadDoc(this)">
+                                        <i class="fas fa-download"></i>
+                                        تحميل PDF
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="doc-card reveal" data-type="homework">
+                            <div class="doc-icon-wrap homework"><i class="fas fa-file-alt"></i></div>
+
+                            <div class="doc-info">
+                                <div class="doc-title">فرض تأليفي 1 - القراءة والإملاء</div>
+                                <div class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> أكتوبر 2026</span>
+                                    <span><i class="fas fa-clock"></i> 12:30h</span>
+                                    <span class="doc-type-badge homework">فرض</span>
+                                    <span> <i class="fas fa-file-pdf"></i> 6 صفحات </span>
+                                    <span class="solution-badge with-solution"> <i class="fas fa-check-circle"></i> مع
+                                        التصحيح
+                                    </span>
+
+                                </div>
+                            </div>
+
+                            <div class="doc-actions">
+                                <span class="doc-size">
+                                    <i class="fas fa-weight-hanging"></i>
+                                    1.2 MB
+                                </span>
+                                <div class="doc-buttons">
+                                    <button class="doc-preview-btn"
+                                        onclick="previewPDF('https://drive.google.com/file/d/1Zb3vStj5pdx_TWb18ea0NNC8vAe/preview')">
+                                        <i class="fas fa-eye"></i>
+                                        معاينة
+                                    </button>
+                                    <a href="https://drive.google.com/file/d/1Zb3vupdx_TWb18ea0NNC8vAe/view?usp=sharing"
+                                        class="doc-download-btn" onclick="downloadDoc(this)">
+                                        <i class="fas fa-download"></i>
+                                        تحميل PDF
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="doc-card reveal" data-type="homework">
+                            <div class="doc-icon-wrap homework"><i class="fas fa-file-alt"></i></div>
+
+                            <div class="doc-info">
+                                <div class="doc-title">فرض تأليفي 1 - القراءة والإملاء</div>
+                                <div class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> أكتوبر 2026</span>
+                                    <span><i class="fas fa-clock"></i> 12:30h</span>
+                                    <span class="doc-type-badge homework">فرض</span>
+                                    <span> <i class="fas fa-file-pdf"></i> 6 صفحات </span>
+                                    <span class="solution-badge with-solution"> <i class="fas fa-check-circle"></i> مع
+                                        التصحيح
+                                    </span>
+
+                                </div>
+                            </div>
+
+                            <div class="doc-actions">
+                                <span class="doc-size">
+                                    <i class="fas fa-weight-hanging"></i>
+                                    1.2 MB
+                                </span>
+                                <div class="doc-buttons">
+                                    <button class="doc-preview-btn"
+                                        onclick="previewPDF('https://drive.google.com/file/d/1Zb3vStj5pdx_TWb18ea0NNC8vAe/preview')">
+                                        <i class="fas fa-eye"></i>
+                                        معاينة
+                                    </button>
+                                    <a href="https://drive.google.com/file/d/1Zb3vupdx_TWb18ea0NNC8vAe/view?usp=sharing"
+                                        class="doc-download-btn" onclick="downloadDoc(this)">
+                                        <i class="fas fa-download"></i>
+                                        تحميل PDF
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="doc-card reveal" data-type="homework">
+                            <div class="doc-icon-wrap homework"><i class="fas fa-file-alt"></i></div>
+
                             <div class="doc-info">
                                 <div class="doc-title">فرض تأليفي 1 - القراءة والإملاء</div>
                                 <div class="doc-meta">
@@ -628,6 +634,7 @@
     </div>
 
     <script defer src="../../../assets/js/modul.js"></script>
+
 
 </body>
 
