@@ -137,10 +137,12 @@ body {
 }
 
 @keyframes logoPulse {
+
     0%,
     100% {
         box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
     }
+
     50% {
         box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
     }
@@ -360,6 +362,7 @@ body {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -396,6 +399,7 @@ body {
     0% {
         transform: rotateX(0deg) rotateY(0deg);
     }
+
     100% {
         transform: rotateX(360deg) rotateY(360deg);
     }
@@ -865,55 +869,85 @@ body {
 /* Responsive */
 
 @media (max-width: 768px) {
+
     .cursor,
     .cursor-dot {
         display: none;
     }
+
     body {
         cursor: auto;
     }
+
     .header {
         padding: 1rem;
     }
+
     .header-inner {
         flex-wrap: wrap;
     }
+
     .search-container {
         order: 3;
         width: 100%;
         max-width: none;
         margin-top: 1rem;
     }
+
+    @media (max-width:768px) {
+
+        .search-container {
+            display: block;
+            order: 3;
+            width: 100%;
+            max-width: none;
+            margin-top: 1rem;
+        }
+
+        .search-box {
+            width: 100%;
+            font-size: 16px;
+        }
+    }
+
     .nav-links {
         display: none;
     }
+
     .mobile-toggle {
         display: block;
     }
+
     .hero-stats {
         flex-direction: column;
         gap: 1.5rem;
     }
+
     .cube-info {
         position: static;
         text-align: center;
         margin-top: 3rem;
         padding: 0 1rem;
     }
+
     .cube-section {
         flex-direction: column;
         padding: 4rem 1rem;
     }
+
     .cube-container {
         transform: scale(0.7);
     }
+
     .footer-grid {
         gap: 2rem;
     }
+
     .footer-bottom {
         flex-direction: column;
         text-align: center;
     }
+
     .levels-grid,
     .subjects-grid,
     .resources-grid {
@@ -1001,16 +1035,12 @@ body {
         padding: 1rem;
         border-top: 1px solid rgba(212, 175, 55, .15);
     }
+
     .nav-links.active {
         display: flex;
     }
 }
 
-@media(max-width:768px) {
-    .search-container {
-        display: none;
-    }
-}
 
 .breadcrumb {
     position: relative;

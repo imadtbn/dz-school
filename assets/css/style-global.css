@@ -142,10 +142,12 @@
 }
 
 @keyframes heartbeat {
+
     0%,
     100% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.2);
     }
@@ -220,25 +222,23 @@
 
 .success-guide-section {
     padding: 6rem 2rem;
-    background: linear-gradient(
-        180deg,
-        var(--void) 0%,
-        var(--navy) 50%,
-        var(--void) 100%
-    );
+    background: linear-gradient(180deg,
+            var(--void) 0%,
+            var(--navy) 50%,
+            var(--void) 100%);
 }
 
 .motivation-grid {
     max-width: 1200px;
     margin: 0 auto 4rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
 .motivation-card {
     background: var(--card-bg);
-    border: 1px solid rgba(212,175,55,.15);
+    border: 1px solid rgba(212, 175, 55, .15);
     border-radius: 24px;
     padding: 2rem;
     text-align: center;
@@ -248,8 +248,8 @@
 
 .motivation-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(212,175,55,.4);
-    box-shadow: 0 15px 40px rgba(212,175,55,.15);
+    border-color: rgba(212, 175, 55, .4);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, .15);
 }
 
 .motivation-card i {
@@ -274,7 +274,7 @@
     background: var(--card-bg);
     border-radius: 30px;
     padding: 3rem;
-    border: 1px solid rgba(212,175,55,.12);
+    border: 1px solid rgba(212, 175, 55, .12);
     backdrop-filter: blur(10px);
 }
 
@@ -295,32 +295,32 @@
 
 /* ===== MOBILE ===== */
 
-@media (max-width:768px){
+@media (max-width:768px) {
 
-    .success-guide-section{
-        padding:4rem 1rem;
+    .success-guide-section {
+        padding: 4rem 1rem;
     }
 
-    .guide-content{
-        padding:1.5rem;
+    .guide-content {
+        padding: 1.5rem;
     }
 
-    .guide-content h3{
-        font-size:1.3rem;
+    .guide-content h3 {
+        font-size: 1.3rem;
     }
 
-    .guide-content p{
-        font-size:.95rem;
-        line-height:2;
-        text-align:right;
+    .guide-content p {
+        font-size: .95rem;
+        line-height: 2;
+        text-align: right;
     }
 
-    .motivation-grid{
-        gap:1rem;
+    .motivation-grid {
+        gap: 1rem;
     }
 
-    .motivation-card{
-        padding:1.5rem;
+    .motivation-card {
+        padding: 1.5rem;
     }
 
 }
@@ -371,20 +371,18 @@
 }
 
 .scroll-top-btn:hover {
-    background: linear-gradient(
-        135deg,
-        var(--gold),
-        var(--accent)
-    );
+    background: linear-gradient(135deg,
+            var(--gold),
+            var(--accent));
 
     color: var(--void);
 
     transform: translateY(-5px);
 
     box-shadow:
-        0 0 15px rgba(212,175,55,.5),
-        0 0 30px rgba(212,175,55,.4),
-        0 0 45px rgba(212,175,55,.25);
+        0 0 15px rgba(212, 175, 55, .5),
+        0 0 30px rgba(212, 175, 55, .4),
+        0 0 45px rgba(212, 175, 55, .25);
 }
 
 .scroll-top-btn i {
@@ -397,27 +395,30 @@
 
 /* Mobile */
 
-@media (max-width:768px){
+@media (max-width:768px) {
 
-    .scroll-top-btn{
-        width:50px;
-        height:50px;
-        font-size:1rem;
-        bottom:20px;
-        left:20px;
+    .scroll-top-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+        bottom: 20px;
+        left: 20px;
     }
 
 }
 
 
 @keyframes goldPulse {
-    0%,100% {
-        box-shadow: 0 0 10px rgba(212,175,55,.25);
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(212, 175, 55, .25);
     }
+
     50% {
         box-shadow:
-            0 0 20px rgba(212,175,55,.5),
-            0 0 35px rgba(212,175,55,.3);
+            0 0 20px rgba(212, 175, 55, .5),
+            0 0 35px rgba(212, 175, 55, .3);
     }
 }
 
@@ -453,22 +454,22 @@
 
 .with-solution {
 
-    background: rgba(34,197,94,.15);
+    background: rgba(34, 197, 94, .15);
 
     color: #4ade80;
 
-    border: 1px solid rgba(34,197,94,.25);
+    border: 1px solid rgba(34, 197, 94, .25);
 }
 
 /* بدون تصحيح */
 
 .no-solution {
 
-    background: rgba(239,68,68,.15);
+    background: rgba(239, 68, 68, .15);
 
     color: #f87171;
 
-    border: 1px solid rgba(239,68,68,.25);
+    border: 1px solid rgba(239, 68, 68, .25);
 }
 
 /* Ad Slots */
@@ -548,3 +549,30 @@
     }
 }
 
+
+/* breadcrumb*/
+
+@media (max-width:768px) {
+
+    .breadcrumb {
+        margin-top: 90px;
+        padding: 1rem;
+        font-size: 0.85rem;
+        overflow-x: auto;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+    }
+
+    .breadcrumb::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (max-width:768px) {
+
+    .breadcrumb a:first-child,
+    .breadcrumb i:not(:first-child) {
+        display: none;
+    }
+}

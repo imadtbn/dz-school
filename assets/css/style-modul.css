@@ -868,6 +868,9 @@ body {
         flex-wrap: wrap;
     }
 
+
+
+
     .subject-stats-bar {
         flex-direction: column;
         gap: 1rem;
@@ -1299,11 +1302,9 @@ body {
 
 .doc-download-btn {
 
-    background: linear-gradient(
-        135deg,
-        var(--gold),
-        var(--accent)
-    );
+    background: linear-gradient(135deg,
+            var(--gold),
+            var(--accent));
 
     color: var(--void);
 
@@ -1312,11 +1313,11 @@ body {
 
 .doc-preview-btn {
 
-    background: rgba(255,255,255,.06);
+    background: rgba(255, 255, 255, .06);
 
     color: var(--gold);
 
-    border: 1px solid rgba(212,175,55,.25);
+    border: 1px solid rgba(212, 175, 55, .25);
 }
 
 .doc-download-btn:hover,
@@ -1325,7 +1326,7 @@ body {
     transform: translateY(-2px);
 
     box-shadow:
-        0 8px 20px rgba(212,175,55,.18);
+        0 8px 20px rgba(212, 175, 55, .18);
 }
 
 @media (max-width:480px) {
